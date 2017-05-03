@@ -1,23 +1,18 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: MainControler', function () {
 
   // load the controller's module
-  beforeEach(module('batusayApp'));
+  beforeEach(module('batusayApp.controllers'));
 
-  var MainCtrl,
-    scope;
+  var controller;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
-      // place here mocked dependencies
-    });
+  beforeEach(inject(function ($controller) {
+    controller = $controller('MainController');
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(MainCtrl.awesomeThings.length).toBe(3);
+    expect(controller.awesomeThings.length).toBe(3);
   });
 });

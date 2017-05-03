@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('batusayApp')
+    .module('batusayApp.controllers')
     .controller('MainController', MainController);
 
   MainController.$inject = [];
