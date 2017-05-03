@@ -1,5 +1,7 @@
 # batusay-frontend
 
+[![CircleCI](https://circleci.com/gh/vilcabamba/batusay-frontend.svg?style=shield)](https://circleci.com/gh/vilcabamba/batusay-frontend)
+
 ## Build & development
 
 - Clone the repo
