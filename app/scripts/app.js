@@ -4,17 +4,17 @@
   angular
     .module('batusayApp', [
       'ui.router',
+      'satellizer',
       'batusayApp.controllers'
     ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $authProvider) {
+
+    $authProvider.facebook({
+      name: 'facebook',
+      url: '/auth/facebook'
+    });
 
     $stateProvider
-      // .state('main', {
-      //   url: '/',
-      //   templateUrl: 'views/main.html',
-      //   controller: 'MainController',
-      //   controllerAs: 'vmMain'
-      // })
       .state('login',{
         url: '/login',
         templateUrl: 'views/login.html',
