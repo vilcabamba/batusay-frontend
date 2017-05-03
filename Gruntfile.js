@@ -16,7 +16,8 @@ module.exports = function (grunt) {
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
-    cdnify: 'grunt-google-cdn'
+    cdnify: 'grunt-google-cdn',
+    ngconstant: 'grunt-ng-constant'
   });
 
   // Configurable paths for the application
@@ -30,6 +31,8 @@ module.exports = function (grunt) {
 
     // Project settings
     yeoman: appConfig,
+
+    ngconstant: require('./config/ngconstant'),
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -224,7 +227,7 @@ module.exports = function (grunt) {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
-    }, 
+    },
 
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
@@ -462,10 +465,11 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
+      return grunt.task.run(['ngconstant:staging','build', 'connect:dist:keepalive']);
     }
 
     grunt.task.run([
+      'ngconstant:development',
       'clean:server',
       'wiredep',
       'concurrent:server',
@@ -475,12 +479,17 @@ module.exports = function (grunt) {
     ]);
   });
 
+  grunt.registerTask('heroku:staging', 'create folder for heroku', function (target) {
+    return grunt.task.run(['ngconstant:staging','build']);
+  });
+
   grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve:' + target]);
   });
 
   grunt.registerTask('test', [
+    'ngconstant:development',
     'clean:server',
     'wiredep',
     'concurrent:test',

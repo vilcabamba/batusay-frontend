@@ -5,6 +5,7 @@
     .module('batusayApp', [
       'ui.router',
       'satellizer',
+      'batusayApp.config',
       'batusayApp.controllers'
     ])
   .config(function ($stateProvider, $urlRouterProvider, $authProvider) {
@@ -40,5 +41,6 @@
   });
 
   angular.module('batusayApp.controllers', []);
+  angular.module('batusayApp.config', []);
 
 })();
