@@ -35,7 +35,8 @@ module.exports = function(config) {
       'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js',
       'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'bower_components/satellizer/dist/satellizer.js',
+      'bower_components/angular-cookie/angular-cookie.js',
+      'bower_components/ng-token-auth/dist/ng-token-auth.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
