@@ -14,7 +14,7 @@
 
     $authProvider.configure({
 			apiUrl: backendHost,
-      validateOnPageLoad: false,
+      tokenValidationPath: '/api/auth/validate_token',
       authProviderPaths: {
         facebook: '/api/auth/facebook',
       }
