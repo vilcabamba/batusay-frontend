@@ -4,16 +4,21 @@
   angular
     .module('batusayApp', [
       'ui.router',
-      'satellizer',
+      'ng-token-auth',
       'batusayApp.config',
       'batusayApp.controllers'
     ])
   .config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 
-    $authProvider.facebook({
-      name: 'facebook',
-      url: '/auth/facebook'
-    });
+    var backendHost = 'http://localhost:3786';
+
+    $authProvider.configure({
+			apiUrl: backendHost,
+      validateOnPageLoad: false,
+      authProviderPaths: {
+        facebook: '/api/auth/facebook',
+      }
+		});
 
     $stateProvider
       .state('login',{
