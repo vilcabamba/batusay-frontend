@@ -5,10 +5,15 @@
     .module('batusayApp.controllers')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = [];
+  LoginController.$inject = ['$auth'];
 
   /* @ngInject */
-  function LoginController() {
+  function LoginController($auth) {
     var loginVm = this;
+    loginVm.authenticate = authenticate;
+
+    function authenticate(){
+      $auth.authenticate('facebook');
+    }
   }
 })();
