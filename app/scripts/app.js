@@ -14,8 +14,9 @@
 
     $authProvider.configure({
 			apiUrl: backendHost,
+      validateOnPageLoad: false,
       authProviderPaths: {
-        facebook: '/api/auth/facebook'
+        facebook: '/api/auth/facebook',
       }
 		});
 
