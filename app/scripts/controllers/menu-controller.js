@@ -11,6 +11,5 @@
   function MenuController($auth) {
     var vmMenu = this;
     vmMenu.user = $auth.user;
-    console.log(vmMenu.user);
   }
 })();
