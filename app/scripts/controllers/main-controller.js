@@ -5,10 +5,10 @@
     .module('batusayApp.controllers')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['$auth'];
+  MainController.$inject = [];
 
   /* @ngInject */
-  function MainController($auth) {
+  function MainController() {
     var vmMain = this;
     vmMain.awesomeThings = [
       'HTML5 Boilerplate',
