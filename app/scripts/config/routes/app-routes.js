@@ -32,6 +32,30 @@
             templateUrl: 'views/main.html',
           }
         }
+      })
+      .state('app.events', {
+        url: '/events',
+        abstract: true
+      })
+      .state('app.events.index', {
+        url: '/',
+        views: {
+          'menu@app': {
+            controllerAs: 'vmEvents',
+            controller: 'EventsController',
+            templateUrl: 'views/events.html',
+          }
+        }
+      })
+      .state('app.events.new', {
+        url: '/new',
+        views: {
+          'menu@app': {
+            controllerAs: 'vmEvent',
+            controller: 'NewEventController',
+            templateUrl: 'views/new-event.html',
+          }
+        }
       });
   });
 

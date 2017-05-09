@@ -8,7 +8,7 @@
     $authProvider.configure({
 			apiUrl: APP.apiHost,
       tokenValidationPath: '/api/auth/validate_token',
-      storage: 'cookies',
+      storage: 'localStorage',
       authProviderPaths: {
         facebook: '/api/auth/facebook',
       },
