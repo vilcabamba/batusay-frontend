@@ -43,7 +43,7 @@
           'menu@app': {
             controllerAs: 'vmEvents',
             controller: 'EventsController',
-            templateUrl: 'views/events.html',
+            templateUrl: 'views//events/index.html',
           }
         }
       })
@@ -53,7 +53,7 @@
           'menu@app': {
             controllerAs: 'vmEvent',
             controller: 'NewEventController',
-            templateUrl: 'views/new-event.html',
+            templateUrl: 'views/events/new.html',
           }
         }
       });

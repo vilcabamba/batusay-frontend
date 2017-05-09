@@ -6,7 +6,8 @@
       'ui.router',
       'ng-token-auth',
       'batusayApp.config',
-      'batusayApp.controllers'
+      'batusayApp.controllers',
+      'ngMessages'
     ]);
 
   angular.module('batusayApp.controllers', []);

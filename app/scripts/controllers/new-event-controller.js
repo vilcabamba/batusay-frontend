@@ -10,5 +10,10 @@
     /* @ngInject */
     function NewEventController() {
         var vmEvent = this;
+        vmEvent.createEvent = createEvent;
+
+        function createEvent(){
+          console.log('yeah');
+        }
     }
 })();
