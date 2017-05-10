@@ -24,5 +24,25 @@
     </div>
   </div>
 
+  <div class="form-group" ng-class="{ 'has-error': vmEvent.form.address.$touched && vmEvent.form.address.$invalid }">
+    <label class="control-label">Dirección</label>
+
+    <input vs-google-autocomplete
+           vs-autocomplete-validator
+           ng-model="vmEvent.event.address"
+           vs-latitude="vmEvent.event.lat"
+           vs-longitude="vmEvent.event.lng"
+           placeholder=""
+           name="address"
+           class="form-control"
+           required
+           type="text">
+
+    <div class="help-block" ng-messages="vmEvent.form.address.$error" ng-if="vmEvent.form.address.$touched">
+      <p ng-message="required">Campo requerido</p>
+      <p ng-message="vsAutocompleteValidator">Dirección no válida</p>
+    </div>
+  </div>
+
   <button type="submit" class="btn btn-default" ng-disabled="vmEvent.form.$invalid">Guardar</button>
 </form>

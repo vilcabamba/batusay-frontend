@@ -13,7 +13,7 @@
         controllerAs: 'vmMenu',
         templateUrl: 'views/menu.html',
         resolve: {
-          auth: function($auth, $state){
+          currentUser: function($auth, $state){
             return $auth.validateUser()
               .then(function userAuthorized(user) {
                 return user;

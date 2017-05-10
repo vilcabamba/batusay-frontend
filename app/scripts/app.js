@@ -7,10 +7,14 @@
       'ng-token-auth',
       'batusayApp.config',
       'batusayApp.controllers',
-      'ngMessages'
+      'batusayApp.services',
+      'ngMessages',
+      'vsGoogleAutocomplete',
+      'angular-toasty'
     ]);
 
   angular.module('batusayApp.controllers', []);
   angular.module('batusayApp.config', []);
+  angular.module('batusayApp.services', []);
 
 })();
