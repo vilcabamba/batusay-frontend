@@ -40,6 +40,7 @@ module.exports = function(config) {
       'bower_components/angular-messages/angular-messages.js',
       'bower_components/vsGoogleAutocomplete/dist/vs-google-autocomplete.js',
       'bower_components/vsGoogleAutocomplete/dist/vs-autocomplete-validator.js',
+      'bower_components/angular-toasty/dist/angular-toasty.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

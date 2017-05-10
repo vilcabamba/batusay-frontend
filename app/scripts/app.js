@@ -9,7 +9,8 @@
       'batusayApp.controllers',
       'batusayApp.services',
       'ngMessages',
-      'vsGoogleAutocomplete'
+      'vsGoogleAutocomplete',
+      'angular-toasty'
     ]);
 
   angular.module('batusayApp.controllers', []);

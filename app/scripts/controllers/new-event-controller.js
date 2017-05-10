@@ -5,19 +5,24 @@
       .module('batusayApp.controllers')
       .controller('NewEventController', NewEventController);
 
-    NewEventController.$inject = ['currentUser', 'EventsServices'];
+    NewEventController.$inject = ['EventsServices', 'toasty', '$state'];
 
     /* @ngInject */
-    function NewEventController(currentUser, EventsServices) {
+    function NewEventController(EventsServices, toasty, $state) {
       var vmEvent = this;
       vmEvent.createEvent = createEvent;
 
       function createEvent(){
-        vmEvent.event.user_id = currentUser.id; //jshint ignore:line
         EventsServices.createEvent(vmEvent.event).then(function(response){
-          console.log(response);
+          $state.go('app.events.index').then(function(){
+            toasty.success({
+              title: 'Evento creado!'
+            });
+          });
         }, function(error){
-          console.log(error);
+          toasty.error({
+            title: 'Existen errores!'
+          });
         });
       }
     }
