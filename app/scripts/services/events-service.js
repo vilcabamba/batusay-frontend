@@ -12,7 +12,8 @@
     var service = {
         createEvent: createEvent,
         getEvents: getEvents,
-        getEvent: getEvent
+        getEvent: getEvent,
+        updateEvent: updateEvent
     };
 
     return service;
@@ -44,6 +45,19 @@
       return $http({
         method: 'GET',
         url: APP.apiHost + '/api/events/' + id
+      }).then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(error){
+        return $q.reject(error);
+      });
+    }
+
+    function updateEvent(updatedEvent) {
+      console.log(updatedEvent);
+      return $http({
+        method: 'PATCH',
+        url: APP.apiHost + '/api/events/' + updatedEvent.id,
+        data: updatedEvent
       }).then(function successCallback(response) {
         return response.data;
       }, function errorCallback(error){
