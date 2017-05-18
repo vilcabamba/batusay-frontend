@@ -5,10 +5,18 @@
     .module('batusayApp.controllers')
     .controller('EventsController', EventsController);
 
-  EventsController.$inject = [];
+  EventsController.$inject = ['EventsServices'];
 
   /* @ngInject */
-  function EventsController() {
+  function EventsController(EventsServices) {
     var vmEvents = this;
+
+    init();
+
+    function init(){
+      EventsServices.getEvents().then(function(response){
+        vmEvents.events = response.events;
+      });
+    }
   }
 })();

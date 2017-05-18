@@ -56,6 +56,16 @@
             templateUrl: 'views/events/new.html',
           }
         }
+      })
+      .state('app.events.show', {
+        url: '/:id',
+        views: {
+          'menu@app': {
+            controllerAs: 'vmEvent',
+            controller: 'EventController',
+            templateUrl: 'views/events/show.html',
+          }
+        }
       });
   });
 

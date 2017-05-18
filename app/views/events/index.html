@@ -1,2 +1,15 @@
-<h1>yeah!</h1>
+<h1>Eventos</h1>
 <a ui-sref="app.events.new">Nuevo evento</a>
+
+<div class="events-container">
+  <div class="event-card"
+       ui-sref="app.events.show({id: event.id})"
+       ng-repeat="event in vmEvents.events track by $index">
+    <div class="event-title">
+      {{event.name}}
+    </div>
+    <div class="event-description">
+      {{event.descripcion}}
+    </div>
+  </div>
+</div>
