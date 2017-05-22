@@ -4,4 +4,10 @@
   {{vmEvent.event.descripcion}}
 </div>
 
-<a ui-sref="app.events.edit({id:vmEvent.event.id})">Editar</a>
+<div id="map" class="map">
+</div>
+
+<div class="links">
+  <a ui-sref="app.events.invite({id:vmEvent.event.id})">Invitar amigos</a> |
+  <a ui-sref="app.events.edit({id:vmEvent.event.id})">Editar</a>
+</div>
