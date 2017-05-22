@@ -5,10 +5,10 @@
       .module('batusayApp.controllers')
       .controller('EditEventController', EditEventController);
 
-    EditEventController.$inject = ['EventsServices', '$stateParams', '$state', 'toasty'];
+    EditEventController.$inject = ['EventsServices', '$stateParams', '$state', 'toasty', 'MapsService'];
 
     /* @ngInject */
-    function EditEventController(EventsServices, $stateParams, $state, toasty) {
+    function EditEventController(EventsServices, $stateParams, $state, toasty, MapsService) {
       var vmEvent = this;
       vmEvent.updateEvent = updateEvent;
 
@@ -18,6 +18,11 @@
         var id = $stateParams.id;
         EventsServices.getEvent(id).then(function(response){
           vmEvent.event = response.event;
+          MapsService.getAddress(vmEvent.event.lat, vmEvent.event.lng).then(function(response){
+            vmEvent.event.address = response;
+          }, function(error){
+            console.log('no address' + error);
+          });
         });
       }
 
