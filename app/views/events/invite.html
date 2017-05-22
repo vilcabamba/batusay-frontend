@@ -1,0 +1,16 @@
+<div class="lists">
+  <ul class="list" title="Usuarios">
+    <li class="item"
+        ng-repeat="item in vmEvent.allFriends"
+        ng-click="vmEvent.moveToListB(item)">
+        <span class="item-contents" ng-animate-ref="{{ item.id }}">Item: {{ item.id }}</span>
+    </li>
+  </ul>
+  <ul class="list" title="Invitados">
+    <li class="item"
+        ng-repeat="item in vmEvent.listB"
+        ng-click="vmEvent.moveToAllFriends(item)">
+        <span class="item-contents" ng-animate-ref="{{ item.id }}">Item: {{ item.id }}</span>
+    </li>
+  </ul>
+</div>

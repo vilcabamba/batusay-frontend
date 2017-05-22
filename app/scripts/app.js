@@ -12,7 +12,8 @@
       'ngMessages',
       'vsGoogleAutocomplete',
       'angular-toasty',
-      'ui.bootstrap.datetimepicker'
+      'ui.bootstrap.datetimepicker',
+      'ngAnimate'
     ]);
 
   angular.module('batusayApp.controllers', []);

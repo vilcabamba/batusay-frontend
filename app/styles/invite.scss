@@ -1,0 +1,82 @@
+.lists {
+  display: flex;
+  min-height: 150px;
+}
+
+.list {
+  width: 200px;
+  border: 1px solid #eeeeee;
+  padding: 0 0 10px 0;
+
+  &:before{
+    content: attr(title);
+    background: #eeeeee;
+    display: block;
+    padding: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  & + .list {
+    border-left: none;
+  }
+}
+
+.item {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.item {
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 150px;
+  height: 30px;
+  overflow: hidden;
+}
+
+.item:hover {
+  color: blue;
+}
+
+.item-contents {
+  display: block;
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+}
+
+/* Contents are cloned and position transitioned between the lists */
+.item-contents.ng-anchor-out {
+  /* No "out" transition: the item moving accross the page is exactly how it
+     appears in the source location */
+}
+.item-contents.ng-anchor-in {
+  transition: 0.2s linear all;
+}
+
+/* The item height is transitioned so space appears/disappears gradually in each list */
+.item.ng-enter {
+  transition:0.1s linear all;
+  height: 0;
+}
+
+.item.ng-enter.ng-enter-active {
+  height: 30px;
+}
+
+.item.ng-leave {
+  transition: 0.1s linear all;
+  height: 30px;
+}
+
+.item.ng-leave.ng-leave-active {
+  height: 0;
+}
