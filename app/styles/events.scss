@@ -1,7 +1,14 @@
+@import "general";
+
 .event-card{
+  @extend .box;
+  margin-top: 5px;
   margin-bottom: 15px;
-  border-radius: 10px;
   padding: 10px;
-  box-shadow: 0 0 5px 2px #eee;
   cursor: pointer;
+
+  .event-title{
+    font-size: 24px;
+    font-style: bold;
+  }
 }
