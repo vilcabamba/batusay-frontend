@@ -54,6 +54,8 @@
 
     "globals": {
         "angular": false,
-        "$": false
+        "$": false,
+        "moment": false,
+        "google": false
     }
 }

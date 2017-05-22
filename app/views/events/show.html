@@ -1,7 +1,7 @@
-<h1>show</h1>
+<h1>{{::vmEvent.event.name}}</h1><small>{{vmEvent.event.date | momentDate}}</small>
 
-<div class="">
-  {{vmEvent.event.name}}
+<div class="event-show-description">
+  {{vmEvent.event.descripcion}}
 </div>
 
 <a ui-sref="app.events.edit({id:vmEvent.event.id})">Editar</a>

@@ -23,16 +23,6 @@
             }
         }
       })
-      .state('app.dashboard', {
-        url: '/dashboard',
-        views: {
-          'menu@app': {
-            controllerAs: 'vmMain',
-            controller: 'MainController',
-            templateUrl: 'views/main.html',
-          }
-        }
-      })
       .state('app.events', {
         url: '/events',
         abstract: true
@@ -43,7 +33,7 @@
           'menu@app': {
             controllerAs: 'vmEvents',
             controller: 'EventsController',
-            templateUrl: 'views//events/index.html',
+            templateUrl: 'views/events/index.html',
           }
         }
       })

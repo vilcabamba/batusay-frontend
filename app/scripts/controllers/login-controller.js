@@ -14,7 +14,7 @@
 
     function authenticate(){
       $auth.authenticate('facebook').then(function(){
-        $state.go('app.dashboard');
+        $state.go('app.events.index');
       }).catch(function(){
         console.log('error');
       });

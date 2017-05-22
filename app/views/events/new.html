@@ -2,47 +2,7 @@
 
 <form name="vmEvent.form" novalidate ng-submit="vmEvent.createEvent()">
 
-  <div class="form-group" ng-class="{ 'has-error': vmEvent.form.name.$touched && vmEvent.form.name.$invalid }">
-    <label class="control-label">Nombre</label>
-    <input type="text" name="name" class="form-control"
-        ng-model="vmEvent.event.name"
-        required>
-
-    <div class="help-block" ng-messages="vmEvent.form.name.$error" ng-if="vmEvent.form.name.$touched">
-      <p ng-message="required">Campo requerido</p>
-    </div>
-  </div>
-
-  <div class="form-group" ng-class="{ 'has-error': vmEvent.form.descripcion.$touched && vmEvent.form.descripcion.$invalid }">
-    <label class="control-label">Descripción</label>
-    <textarea name="descripcion" class="form-control"
-              ng-model="vmEvent.event.descripcion"
-              required></textarea>
-
-    <div class="help-block" ng-messages="vmEvent.form.descripcion.$error" ng-if="vmEvent.form.descripcion.$touched">
-      <p ng-message="required">Campo requerido</p>
-    </div>
-  </div>
-
-  <div class="form-group" ng-class="{ 'has-error': vmEvent.form.address.$touched && vmEvent.form.address.$invalid }">
-    <label class="control-label">Dirección</label>
-
-    <input vs-google-autocomplete
-           vs-autocomplete-validator
-           ng-model="vmEvent.event.address"
-           vs-latitude="vmEvent.event.lat"
-           vs-longitude="vmEvent.event.lng"
-           placeholder=""
-           name="address"
-           class="form-control"
-           required
-           type="text">
-
-    <div class="help-block" ng-messages="vmEvent.form.address.$error" ng-if="vmEvent.form.address.$touched">
-      <p ng-message="required">Campo requerido</p>
-      <p ng-message="vsAutocompleteValidator">Dirección no válida</p>
-    </div>
-  </div>
+  <ng-include src="'views/events/form.html'"></ng-include>
 
   <button type="submit" class="btn btn-default" ng-disabled="vmEvent.form.$invalid">Guardar</button>
 </form>

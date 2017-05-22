@@ -9,11 +9,13 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-toasty/dist/angular-toasty.css" />
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
   </head>
   <body ng-app="batusayApp" ng-controller="SiteController as siteVm">
     <!--[if lte IE 8]>
@@ -52,18 +54,27 @@
     <script src="bower_components/vsGoogleAutocomplete/dist/vs-google-autocomplete.js"></script>
     <script src="bower_components/vsGoogleAutocomplete/dist/vs-autocomplete-validator.js"></script>
     <script src="bower_components/angular-toasty/dist/angular-toasty.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/moment/locale/es.js"></script>
+    <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+    <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <!-- config -->
+        <script src="scripts/config/storage.js"></script>
+        <script src="scripts/config/moment-config.js"></script>
         <script src="scripts/config/routes/core-routes.js"></script>
         <script src="scripts/config/routes/app-routes.js"></script>
         <script src="scripts/config/login-config.js"></script>
         <script src="scripts/config/constants.js"></script>
+        <!-- filters -->
+        <script src="scripts/filters/date-filter.js"></script>
         <!-- services -->
         <script src="scripts/services/events-service.js"></script>
+        <script src="scripts/services/maps-service.js"></script>
         <!-- controllers -->
         <script src="scripts/controllers/site-controller.js"></script>
         <script src="scripts/controllers/menu-controller.js"></script>
