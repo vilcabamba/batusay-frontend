@@ -10,7 +10,8 @@
       'batusayApp.services',
       'ngMessages',
       'vsGoogleAutocomplete',
-      'angular-toasty'
+      'angular-toasty',
+      'ui.bootstrap.datetimepicker'
     ]);
 
   angular.module('batusayApp.controllers', []);

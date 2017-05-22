@@ -24,6 +24,27 @@
     </div>
   </div>
 
+  <div class="form-group" ng-class="{ 'has-error': vmEvent.form.date.$touched && vmEvent.form.date.$invalid }">
+    <label class="control-label">Fecha</label>
+
+    <div class="dropdown dropdown1-parent">
+      <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown" data-target=".dropdown1-parent">
+        <div class="input-group">
+          <input type="text" class="form-control" data-ng-model="vmEvent.event.date">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+      </a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <datetimepicker data-ng-model="vmEvent.event.date"
+                          data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' }"></datetimepicker>
+      </ul>
+  </div>
+
+    <div class="help-block" ng-messages="vmEvent.form.date.$error" ng-if="vmEvent.form.date.$touched">
+      <p ng-message="required">Campo requerido</p>
+    </div>
+  </div>
+
   <div class="form-group" ng-class="{ 'has-error': vmEvent.form.address.$touched && vmEvent.form.address.$invalid }">
     <label class="control-label">Dirección</label>
 
