@@ -35,7 +35,8 @@
           });
         }, function(error){
           toasty.error({
-            title: 'Existen errores!'
+            title: 'Existen errores!',
+            msg: error.data.errors.join(',')
           });
         });
       }
