@@ -22,7 +22,7 @@
       constants: {
         APP: {
           name: 'staging',
-          apiHost: 'https://batusay-backend.herokuapp.com',
+          apiHost: 'https://batusay.herokuapp.com',
           appName: 'De ley!'
         }
       }
