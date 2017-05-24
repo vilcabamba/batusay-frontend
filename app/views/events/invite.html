@@ -2,15 +2,19 @@
   <ul class="list" title="Usuarios">
     <li class="item"
         ng-repeat="item in vmEvent.allFriends"
-        ng-click="vmEvent.moveToListB(item)">
-        <span class="item-contents" ng-animate-ref="{{ item.id }}">Item: {{ item.id }}</span>
+        ng-click="vmEvent.moveToInvitees(item)">
+        <span class="item-contents" ng-animate-ref="{{ item.id }}">{{ item.name }}</span>
     </li>
   </ul>
   <ul class="list" title="Invitados">
     <li class="item"
-        ng-repeat="item in vmEvent.listB"
+        ng-repeat="item in vmEvent.invitees"
         ng-click="vmEvent.moveToAllFriends(item)">
-        <span class="item-contents" ng-animate-ref="{{ item.id }}">Item: {{ item.id }}</span>
+        <span class="item-contents" ng-animate-ref="{{ item.id }}">{{ item.name }}</span>
     </li>
   </ul>
+</div>
+
+<div class="">
+  <a ng-click="vmEvent.invitee()">Invitar</a>
 </div>

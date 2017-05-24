@@ -5,16 +5,15 @@
       .module('batusayApp.controllers')
       .controller('InviteEventController', InviteEventController);
 
-    InviteEventController.$inject = ['$stateParams', 'FriendsService'];
+    InviteEventController.$inject = ['$stateParams', 'FriendsService', 'EventsServices', 'toasty', '$state'];
 
     /* @ngInject */
-    function InviteEventController($stateParams, FriendsService) {
+    function InviteEventController($stateParams, FriendsService, EventsServices, toasty, $state) {
       var vmEvent = this;
       vmEvent.eventId = $stateParams.id;
       vmEvent.moveToAllFriends = moveToAllFriends;
-      vmEvent.moveToListB = moveToListB;
-
-      vmEvent.listB = [{id:6}];
+      vmEvent.moveToInvitees = moveToInvitees;
+      vmEvent.invitee = invitee;
 
       init();
 
@@ -24,18 +23,36 @@
         }, function(error){
           console.log(error);
         });
+        EventsServices.getInvitees(vmEvent.eventId).then(function(response){
+          vmEvent.invitees = response.invitees;
+        }, function(error){
+          console.log(error);
+        });
       }
 
-      function moveToListB (item) {
-        vmEvent.listB.push(item);
+      function moveToInvitees(item) {
+        vmEvent.invitees.push(item);
         vmEvent.allFriends.splice(vmEvent.allFriends.indexOf(item), 1);
       }
 
       function moveToAllFriends(item) {
         vmEvent.allFriends.push(item);
-        vmEvent.listB.splice(vmEvent.listB.indexOf(item), 1);
+        vmEvent.invitees.splice(vmEvent.invitees.indexOf(item), 1);
       }
 
+      function invitee(){
+        EventsServices.setInvitees(vmEvent.eventId, vmEvent.invitees).then(function(response){
+          $state.go('app.events.show', {id: vmEvent.eventId}).then(function(){
+            toasty.success({
+              title: 'Evento creado!'
+            });
+          });
+        }, function(error){
+          toasty.error({
+            title: 'Existen errores!'
+          });
+        });
+      }
 
     }
 })();

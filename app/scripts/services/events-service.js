@@ -13,7 +13,9 @@
         createEvent: createEvent,
         getEvents: getEvents,
         getEvent: getEvent,
-        updateEvent: updateEvent
+        updateEvent: updateEvent,
+        getInvitees: getInvitees,
+        setInvitees: setInvitees
     };
 
     return service;
@@ -58,6 +60,31 @@
         method: 'PATCH',
         url: APP.apiHost + '/api/events/' + updatedEvent.id,
         data: updatedEvent
+      }).then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(error){
+        return $q.reject(error);
+      });
+    }
+
+    function getInvitees(eventId){
+      return $http({
+        method: 'GET',
+        url: APP.apiHost + '/api/events/' + eventId + '/invitees'
+      }).then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(error){
+        return $q.reject(error);
+      });
+    }
+
+    function setInvitees(eventId, users){
+      return $http({
+        method: 'POST',
+        url: APP.apiHost + '/api/events/' + eventId + '/invitees',
+        data: {
+          user_ids: users //jshint ignore:line
+        }
       }).then(function successCallback(response) {
         return response.data;
       }, function errorCallback(error){
