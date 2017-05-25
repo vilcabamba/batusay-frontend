@@ -1,14 +1,14 @@
 <div class="lists">
   <ul class="list" title="Usuarios">
     <li class="item"
-        ng-repeat="item in vmEvent.allFriends"
+        ng-repeat="item in vmEvent.allFriends track by $index"
         ng-click="vmEvent.moveToInvitees(item)">
         <span class="item-contents" ng-animate-ref="{{ item.id }}">{{ item.name }}</span>
     </li>
   </ul>
   <ul class="list" title="Invitados">
     <li class="item"
-        ng-repeat="item in vmEvent.invitedFriends"
+        ng-repeat="item in vmEvent.invitedFriends track by $index"
         ng-click="vmEvent.moveToAllFriends(item)">
         <span class="item-contents" ng-animate-ref="{{ item.id }}">{{ item.name }}</span>
     </li>
@@ -16,6 +16,6 @@
 </div>
 
 <div class="">
-  <a ng-click="vmEvent.invitee()">Invitar</a> |
+  <a href="javascript:void(0)" ng-click="vmEvent.invitee()">Invitar</a> |
   <a ui-sref="app.events.show({id: vmEvent.eventId})">Regresar</a>
 </div>

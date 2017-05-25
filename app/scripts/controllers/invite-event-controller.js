@@ -46,7 +46,7 @@
         EventsServices.setInvitees(vmEvent.eventId, vmEvent.invitedFriends).then(function(response){
           $state.go('app.events.show', {id: vmEvent.eventId}).then(function(){
             toasty.success({
-              title: 'Evento creado!'
+              title: 'Lista de invitados actualizada!'
             });
           });
         }, function(error){
