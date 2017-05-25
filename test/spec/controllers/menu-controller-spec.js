@@ -5,7 +5,9 @@
     var ctrl,
       dependencies,
       $controller,
-      $auth;
+      $auth,
+      $state,
+      toasty;
 
     beforeEach(module('batusayApp.controllers'));
 
@@ -16,8 +18,16 @@
           name: 'facebook user'
         }
       };
+      $state = {
+        go: function(){return true;}
+      };
+      toasty = {
+        success: function(){return true;}
+      };
       dependencies = {
-        $auth: $auth
+        $auth: $auth,
+        $state: $state,
+        toasty: toasty
       };
 
       ctrl = $controller('MenuController', dependencies);
