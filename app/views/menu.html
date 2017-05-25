@@ -18,9 +18,15 @@
           <li ui-sref-active="active"><a ui-sref="app.events.index">Eventos</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><span class="username">{{::vmMenu.user.name}}</span>
-              <img class="img-circle"
-                   ng-src="{{vmMenu.user.image}}">
+            <li role="presentation" class="dropdown">
+              <a class="dropdown-toggle user-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="username">{{::vmMenu.user.name}}</span>
+                  <img class="img-circle"
+                       ng-src="{{vmMenu.user.image}}"> <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li ng-click="vmMenu.logout()" class="clickeable">Cerrar sesión</li>
+              </ul>
             </li>
         </ul>
       </div>
