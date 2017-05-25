@@ -18,33 +18,37 @@
       init();
 
       function init(){
-        FriendsService.getFriends().then(function(response){
-          vmEvent.allFriends = response.friends;
-        }, function(error){
-          console.log(error);
-        });
         EventsServices.getInvitees(vmEvent.eventId).then(function(response){
-          vmEvent.invitees = response.invitees;
+          vmEvent.invitedFriends = response.invitees.map(function(invitee){
+            return invitee.user;
+          });
+          FriendsService.getFriends().then(function(response){
+            vmEvent.allFriends = response.friends.filter(function(friend){
+              return !_.some(vmEvent.invitedFriends, friend);
+            });
+          }, function(error){
+            console.log(error);
+          });
         }, function(error){
           console.log(error);
         });
       }
 
-      function moveToInvitees(item) {
-        vmEvent.invitees.push(item);
-        vmEvent.allFriends.splice(vmEvent.allFriends.indexOf(item), 1);
+      function moveToInvitees(user) {
+        vmEvent.invitedFriends.push(user);
+        vmEvent.allFriends.splice(vmEvent.allFriends.indexOf(user), 1);
       }
 
-      function moveToAllFriends(item) {
-        vmEvent.allFriends.push(item);
-        vmEvent.invitees.splice(vmEvent.invitees.indexOf(item), 1);
+      function moveToAllFriends(user) {
+        vmEvent.allFriends.push(user);
+        vmEvent.invitedFriends.splice(vmEvent.invitedFriends.indexOf(user), 1);
       }
 
       function invitee(){
-        EventsServices.setInvitees(vmEvent.eventId, vmEvent.invitees).then(function(response){
+        EventsServices.setInvitees(vmEvent.eventId, vmEvent.invitedFriends).then(function(response){
           $state.go('app.events.show', {id: vmEvent.eventId}).then(function(){
             toasty.success({
-              title: 'Evento creado!'
+              title: 'Lista de invitados actualizada!'
             });
           });
         }, function(error){

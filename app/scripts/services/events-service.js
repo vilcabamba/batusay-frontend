@@ -79,11 +79,15 @@
     }
 
     function setInvitees(eventId, users){
+      var userIds = users.map(function (user){
+        return user.id;
+      });
+
       return $http({
         method: 'POST',
         url: APP.apiHost + '/api/events/' + eventId + '/invitees',
         data: {
-          user_ids: users //jshint ignore:line
+          user_ids: userIds //jshint ignore:line
         }
       }).then(function successCallback(response) {
         return response.data;

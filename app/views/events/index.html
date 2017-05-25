@@ -8,8 +8,10 @@
     <div class="event-title">
       {{event.name}}
     </div>
+    <small>{{event.date | momentDate}}</small>
     <div class="event-description">
       {{event.descripcion}}
     </div>
+    <small>{{event.invited_people}} invitados</small>
   </div>
 </div>

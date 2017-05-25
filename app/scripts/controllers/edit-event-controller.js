@@ -28,7 +28,7 @@
 
       function updateEvent(){
         EventsServices.updateEvent(vmEvent.event).then(function(response){
-          $state.go('app.events.index').then(function(){
+          $state.go('app.events.show', {id: vmEvent.event.id}).then(function(){
             toasty.success({
               title: 'Evento actualizado!'
             });

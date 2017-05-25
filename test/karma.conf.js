@@ -46,6 +46,7 @@ module.exports = function(config) {
       'bower_components/moment/locale/es.js',
       'bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js',
       'bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js',
+      'bower_components/lodash/lodash.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
