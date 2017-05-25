@@ -1,9 +1,8 @@
-<h1>Mis eventos</h1>
-<a ui-sref="app.events.new">Nuevo evento</a>
+<h1>Eventos como invitado</h1>
 
 <div class="events-container">
   <div class="event-card"
-       ui-sref="app.events.show({id: event.id})"
+       ui-sref="app.invited.show({id: event.id})"
        ng-repeat="event in vmEvents.events track by $index">
     <div class="event-title">
       {{event.name}}

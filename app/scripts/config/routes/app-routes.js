@@ -76,6 +76,30 @@
             templateUrl: 'views/events/edit.html',
           }
         }
+      })
+      .state('app.invited', {
+        url: '/invited',
+        abstract: true
+      })
+      .state('app.invited.index', {
+        url: '/',
+        views: {
+          'menu@app': {
+            controllerAs: 'vmEvents',
+            controller: 'EventsController',
+            templateUrl: 'views/invited/index.html',
+          }
+        }
+      })
+      .state('app.invited.show', {
+        url: '/:id',
+        views: {
+          'menu@app': {
+            controllerAs: 'vmEvent',
+            controller: 'EventController',
+            templateUrl: 'views/invited/show.html',
+          }
+        }
       });
   });
 
