@@ -18,14 +18,16 @@
       init();
 
       function init(){
-        FriendsService.getFriends().then(function(response){
-          vmEvent.allFriends = response.friends;
-        }, function(error){
-          console.log(error);
-        });
         EventsServices.getInvitees(vmEvent.eventId).then(function(response){
           vmEvent.invitedFriends = response.invitees.map(function(invitee){
             return invitee.user;
+          });
+          FriendsService.getFriends().then(function(response){
+            vmEvent.allFriends = response.friends.filter(function(friend){
+              return !_.some(vmEvent.invitedFriends, friend);
+            });
+          }, function(error){
+            console.log(error);
           });
         }, function(error){
           console.log(error);
