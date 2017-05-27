@@ -40,14 +40,12 @@
 
     describe('init controller', function () {
       it('Should exist controller', function () {
-        console.log('authhhhh', $auth);
         expect(ctrl).toBeTruthy();
       });
     });
 
     describe('functions', function(){
       it('Should call $state.go after authenticate', function(){
-        console.log('authhhhh222222', $auth);
         var spy = spyOn($state, 'go');
         deferLogin.resolve();
         ctrl.authenticate();

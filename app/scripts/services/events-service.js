@@ -55,7 +55,6 @@
     }
 
     function updateEvent(updatedEvent) {
-      console.log(updatedEvent);
       return $http({
         method: 'PATCH',
         url: APP.apiHost + '/api/events/' + updatedEvent.id,
