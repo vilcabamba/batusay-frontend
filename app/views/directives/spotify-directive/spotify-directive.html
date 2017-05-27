@@ -1,0 +1,50 @@
+<div class="title">
+	<h4><i class="fa fa-spotify"></i> agrega canciones a tu fiesta</h4>
+</div>
+<div class="input-group search-bar">
+	<input type="text"
+         ng-model="spotifyVm.searchTerm"
+         ng-keypress="spotifyVm.searchOnEnter($event)"
+         class="form-control"
+         placeholder="buscar..."/>
+	<span class="input-group-addon clickeable" ng-click="spotifyVm.search()"><i class="fa fa-search"></i></span>
+</div>
+
+<ul>
+	<li class="search-result" ng-repeat="result in spotifyVm.results">
+		<img class="artwork" ng-src="{{result.album.images[2].url}}"/>
+		<div class="info">
+			<div class="title">
+				<span>{{result.name}}</span>
+			</div>
+			<div class="artist">
+				<span class="property">Artist(s): </span>
+				<span ng-repeat="artist in result.artists">
+					<a class="link" href="#" ng-click="searchArtist(artist.name)">{{artist.name}}</a>{{$last ? '' : ','}}
+				</span>
+			</div>
+			<div class="album">
+				<span class="property">Album: </span>
+				<span>{{result.album.name}}</span>
+			</div>
+			<div class="tags">
+				<span class="label label-primary">time: {{result.duration_ms | momentDuration}}</span>
+				<span class="label label-default">popularity: {{result.popularity }}</span>
+				<span class="label label-danger" ng-if="result.explicit">explicit</span>
+			</div>
+		</div>
+		<div class="play-container" ng-if="result.preview_url">
+			<button ng-class="!result.play ? 'playback btn btn-sm' : 'playback playback-active btn btn-sm'" ng-click="spotifyVm.play(result)">
+				<i ng-class="!result.play ? 'fa fa-play' : 'fa fa-stop'"></i> {{!result.play ? "play" : "stop"}}
+			</button>
+		</div>
+	</li>
+</ul>
+
+<div id="now-playing">
+	<div class="song-info">
+		<span ng-model="spotifyVm.nowPlayingName">{{spotifyVm.nowPlayingName}} - </span>
+		<span ng-model="spotifyVm.nowPlayingArtist">{{spotifyVm.nowPlayingArtist}}</span>
+	</div>
+	<div class="audio-controls"></div>
+</div>

@@ -1,16 +1,20 @@
 <h1>{{::vmEvent.event.name}}</h1>
 <div>
-  <small>{{vmEvent.event.date | momentDate}}</small>
+  <small>{{::vmEvent.event.date | momentDate}}</small>
 </div>
 <div>
-  <small>{{vmEvent.event.invited_people}} invitados</small>
+  <small>{{::vmEvent.event.invited_people}} invitados</small>
 </div>
 
 <div class="event-show-description">
-  {{vmEvent.event.descripcion}}
+  {{::vmEvent.event.descripcion}}
 </div>
 
+
 <div id="map" class="map">
+</div>
+
+<div spotify class="spotify-container">
 </div>
 
 <div class="links">
