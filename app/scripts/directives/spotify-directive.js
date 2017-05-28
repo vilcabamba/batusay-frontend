@@ -24,7 +24,6 @@
   function SpotifyController($scope, SpotifyService) {
     var spotifyVm = this;
     spotifyVm.search = search;
-    spotifyVm.play = play;
     spotifyVm.searchOnEnter = searchOnEnter;
 
     function search(){
@@ -39,38 +38,6 @@
       if ($event.which === 13) {
         search();
       }
-    }
-
-    function play(result) {
-      var song = result;
-      var nowPlayingElem = $('#now-playing');
-      var audioControlsElem = $('.audio-controls');
-
-      if (song.play) {
-        nowPlayingElem.hide();
-        spotifyVm.nowPlaying[1].pause();
-        spotifyVm.nowPlaying[0].play = false;
-        return;
-      }
-
-      if (spotifyVm.nowPlaying && spotifyVm.nowPlaying[1]) {
-        spotifyVm.nowPlaying[1].pause();
-        spotifyVm.nowPlaying[0].play = false;
-      }
-
-      var audio = new Audio(song.preview_url); //jshint ignore:line
-      audio.controls = true;
-      song.play = true;
-
-      spotifyVm.nowPlaying = [song, audio];
-      spotifyVm.nowPlayingName = song.name;
-      spotifyVm.nowPlayingArtist = $.map(song.artists, function(elem) {
-        return elem.name;
-      }).join(', ');
-
-      audioControlsElem.empty().append(audio);
-      nowPlayingElem.show();
-      audio.play();
     }
   }
 })();
