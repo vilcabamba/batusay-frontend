@@ -5,10 +5,10 @@
     .module('batusayApp.controllers')
     .controller('EventsController', EventsController);
 
-  EventsController.$inject = ['EventsServices'];
+  EventsController.$inject = ['EventsServices', 'toasty'];
 
   /* @ngInject */
-  function EventsController(EventsServices) {
+  function EventsController(EventsServices, toasty) {
     var vmEvents = this;
     vmEvents.removeEvent = removeEvent;
 
@@ -24,7 +24,11 @@
     function removeEvent(eventToRemove, $event){
       $event.stopPropagation();
       EventsServices.removeEvent(eventToRemove).then(function(response){
-        console.log(response);
+        var index = vmEvents.futureEvents.indexOf(eventToRemove);
+        vmEvents.futureEvents.splice(index, 1);
+        toasty.success({
+          title: 'Evento eliminado!'
+        });
       }, function(error){
         console.log(error);
       });
