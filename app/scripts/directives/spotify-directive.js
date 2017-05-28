@@ -25,11 +25,20 @@
     var spotifyVm = this;
     spotifyVm.search = search;
     spotifyVm.play = play;
+    spotifyVm.searchOnEnter = searchOnEnter;
 
     function search(){
-      SpotifyService.getSongs(spotifyVm.searchTerm).then(function(response){
-        spotifyVm.results = response;
-      });
+      if (spotifyVm.searchTerm) {
+        SpotifyService.getSongs(spotifyVm.searchTerm).then(function(response){
+          spotifyVm.results = response;
+        });
+      }
+    }
+
+    function searchOnEnter($event){
+      if ($event.which === 13) {
+        search();
+      }
     }
 
     function play(result) {

@@ -15,7 +15,8 @@
         getEvent: getEvent,
         updateEvent: updateEvent,
         getInvitees: getInvitees,
-        setInvitees: setInvitees
+        setInvitees: setInvitees,
+        removeEvent: removeEvent
     };
 
     return service;
@@ -88,6 +89,17 @@
         data: {
           user_ids: userIds //jshint ignore:line
         }
+      }).then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(error){
+        return $q.reject(error);
+      });
+    }
+
+    function removeEvent(eventToRemove){
+      return $http({
+        method: 'DELETE',
+        url: APP.apiHost + '/api/events/' + eventToRemove.id
       }).then(function successCallback(response) {
         return response.data;
       }, function errorCallback(error){
