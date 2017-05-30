@@ -10,6 +10,7 @@
       MapsService,
       $q,
       deferEvent,
+      toasty,
       $scope;
 
     beforeEach(module('batusayApp.controllers'));
@@ -32,11 +33,18 @@
           return true;
         }
       };
+      toasty = {
+        success: function(){
+          return true;
+        }
+      };
 
       dependencies = {
         EventsServices: EventsServices,
         $stateParams: $stateParams,
-        MapsService: MapsService
+        MapsService: MapsService,
+        $scope: $scope,
+        toasty: toasty
       };
 
       ctrl = $controller('EventController', dependencies);
@@ -54,7 +62,8 @@
             id: 1,
             name: 'evento1',
             lat: 12312313,
-            lng: 1312312321
+            lng: 1312312321,
+            songs: []
           }
         };
         deferEvent.resolve(responseObject);
@@ -69,7 +78,8 @@
             id: 1,
             name: 'evento1',
             lat: 12312313,
-            lng: 1312312321
+            lng: 1312312321,
+            songs: []
           }
         };
         deferEvent.resolve(responseObject);
