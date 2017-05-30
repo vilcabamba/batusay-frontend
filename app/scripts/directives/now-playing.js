@@ -44,7 +44,7 @@
         }
 
         var audio = new Audio(song.preview_url); //jshint ignore:line
-        audio.controls = true;
+        // audio.controls = true;
         song.play = true;
 
         nowPlayingVm.nowPlaying = [song, audio];
@@ -56,6 +56,12 @@
         audioControlsElem.empty().append(audio);
         nowPlayingElem.show();
         audio.play();
+
+        angular.element(audio).on('pause', function(){
+          $scope.$apply(function(){
+            song.play = false
+          });
+        });
       });
   }
 })();
