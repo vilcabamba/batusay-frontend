@@ -1,10 +1,28 @@
-<h1>Eventos</h1>
+<h1>Mis eventos</h1>
 <a ui-sref="app.events.new">Nuevo evento</a>
 
 <div class="events-container">
+  <h3>Eventos por venir</h3>
   <div class="event-card"
        ui-sref="app.events.show({id: event.id})"
-       ng-repeat="event in vmEvents.events track by $index">
+       ng-repeat="event in vmEvents.futureEvents track by $index">
+    <div class="event-remove" ng-click="vmEvents.removeEvent(event, $event)">
+     <i class="fa fa-remove"></i>
+    </div>
+    <div class="event-title">
+      {{event.name}}
+    </div>
+    <small>{{event.date | momentDate}}</small>
+    <div class="event-description">
+      {{event.descripcion}}
+    </div>
+    <small>{{event.invited_people}} invitados</small>
+  </div>
+
+  <h3>Eventos pasados</h3>
+  <div class="event-card"
+       ui-sref="app.events.show({id: event.id})"
+       ng-repeat="event in vmEvents.pastEvents track by $index">
     <div class="event-title">
       {{event.name}}
     </div>

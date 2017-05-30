@@ -9,6 +9,7 @@
       'batusayApp.controllers',
       'batusayApp.services',
       'batusayApp.filters',
+      'batusayApp.directives',
       'ngMessages',
       'vsGoogleAutocomplete',
       'angular-toasty',
@@ -20,5 +21,6 @@
   angular.module('batusayApp.config', []);
   angular.module('batusayApp.services', []);
   angular.module('batusayApp.filters', []);
+  angular.module('batusayApp.directives', []);
 
 })();

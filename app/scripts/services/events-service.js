@@ -15,7 +15,9 @@
         getEvent: getEvent,
         updateEvent: updateEvent,
         getInvitees: getInvitees,
-        setInvitees: setInvitees
+        setInvitees: setInvitees,
+        removeEvent: removeEvent,
+        addSong: addSong
     };
 
     return service;
@@ -55,7 +57,6 @@
     }
 
     function updateEvent(updatedEvent) {
-      console.log(updatedEvent);
       return $http({
         method: 'PATCH',
         url: APP.apiHost + '/api/events/' + updatedEvent.id,
@@ -88,6 +89,31 @@
         url: APP.apiHost + '/api/events/' + eventId + '/invitees',
         data: {
           user_ids: userIds //jshint ignore:line
+        }
+      }).then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(error){
+        return $q.reject(error);
+      });
+    }
+
+    function removeEvent(eventToRemove){
+      return $http({
+        method: 'DELETE',
+        url: APP.apiHost + '/api/events/' + eventToRemove.id
+      }).then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(error){
+        return $q.reject(error);
+      });
+    }
+
+    function addSong(eventId, song){
+      return $http({
+        method: 'POST',
+        url: APP.apiHost + '/api/events/' + eventId + '/songs',
+        data: {
+          spotify_id: song.id //jshint ignore:line
         }
       }).then(function successCallback(response) {
         return response.data;

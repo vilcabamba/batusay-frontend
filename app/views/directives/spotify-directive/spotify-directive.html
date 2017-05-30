@@ -1,0 +1,13 @@
+<div class="title">
+	<h4><i class="fa fa-spotify"></i> agrega canciones a tu fiesta</h4>
+</div>
+<div class="input-group search-bar">
+	<input type="text"
+         ng-model="spotifyVm.searchTerm"
+         ng-keypress="spotifyVm.searchOnEnter($event)"
+         class="form-control"
+         placeholder="buscar..."/>
+	<span class="input-group-addon clickeable" ng-click="spotifyVm.search()"><i class="fa fa-search"></i></span>
+</div>
+
+<songs-list song-list="spotifyVm.results" should-add="true"></songs-list>

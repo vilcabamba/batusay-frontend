@@ -22,7 +22,6 @@
         return $q(function(resolve, reject){
           geocoder.geocode({ 'latLng': latlng }, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
-              console.log(results);
               if (results[0]) {
                 resolve(results[0].formatted_address); //jshint ignore:line
               } else {

@@ -1,0 +1,155 @@
+$primaryColour: #77ab17;
+
+audio {
+  outline: none;
+}
+
+.now-playing {
+  color: #fff;
+  background: #2D2D2D;
+  padding: 0.5em 1em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.8;
+  display: none;
+  font-size: 1.2em;
+
+  span {
+    font-size: smaller;
+    letter-spacing: 1px;
+  }
+
+  .audio-controls {
+    height: 30px;
+    float: right;
+  }
+}
+
+.search-container {
+  background-color: $primaryColour;
+  padding: 1em;
+  overflow: auto;
+
+  h1 {
+    margin-top: 0;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  h1:hover {
+    color: #d2d2d2;
+  }
+}
+
+.no-results {
+  margin-top: 1em;
+  padding: 1em;
+  display: none;
+  background-color: #F5F5F5;
+  text-align: center;
+}
+
+.search-results {
+  margin-top: 1em;
+  display: none;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.search-result {
+  padding: 1em;
+  background-color: #F5F5F5;
+  border-bottom: 1px solid #d2d2d2;
+  overflow: auto;
+
+  .artwork {
+    border: 1px solid #666;
+    vertical-align: middle;
+    float: left;
+    width: 10%;
+  }
+
+  .title {
+    font-size: 1.1em;
+    font-weight: 300;
+  }
+
+  .info {
+    float: left;
+    margin: 0px 15px;
+    text-overflow: ellipsis;
+    width: 70%;
+  }
+
+  .tags:not(:last-child) {
+    margin-right: 5px;
+  }
+
+  .tags span {
+    font-weight: normal;
+  }
+
+  .play-container {
+    width: 10%;
+    text-align: right;
+    float: right;
+  }
+
+  .playback {
+    background-color: #666 !important;
+    border-color: #666 !important;
+    color: #fff !important;
+    outline: none !important;
+  }
+
+  .playback:hover, .playback-active {
+    background-color: $primaryColour !important;
+    border-color: $primaryColour !important;
+  }
+}
+
+.buttons {
+  background-color: #fff;
+  padding: 0.5em 1em;
+  overflow: auto;
+  border-bottom: 1px solid #d2d2d2;
+
+  .fa-chevron-left {
+    margin-right: 5px;
+  }
+
+  .fa-chevron-right {
+    margin-left: 5px;
+  }
+
+  .count {
+    display: block;
+    text-align: center;
+  }
+}
+
+.btn-add {
+  margin-top: 5px;
+}
+
+.link {
+  text-decoration: none;
+  border-bottom: 1px dotted $primaryColour;
+  color: $primaryColour;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: $primaryColour;
+  text-decoration: none;
+}
+
+.hidden {
+  visibility: hidden;
+}

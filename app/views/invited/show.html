@@ -1,0 +1,19 @@
+<h1>{{::vmEvent.event.name}}</h1>
+<div>
+  <small>{{vmEvent.event.date | momentDate}}</small>
+</div>
+<div>
+  <small>{{vmEvent.event.invited_people}} invitados</small>
+</div>
+
+<div class="event-show-description">
+  {{vmEvent.event.descripcion}}
+</div>
+
+<div id="map" class="map">
+</div>
+
+<div class="links">
+  <a ui-sref="app.events.invite({id:vmEvent.event.id})">Aceptar invitación</a>
+  <a ui-sref="app.invited.index">Regresar</a>
+</div>

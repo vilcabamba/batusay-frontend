@@ -15,6 +15,13 @@
   .event-description {
     margin-top: 10px;
   }
+
+  .event-remove {
+    float: right;
+    &:hover{
+      color: red;
+    }
+  }
 }
 
 .event-show-description {

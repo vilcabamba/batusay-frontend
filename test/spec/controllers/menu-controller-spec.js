@@ -7,19 +7,32 @@
       $controller,
       $auth,
       $state,
+      $q,
+      deferLogout,
+      deferState,
+      $scope,
       toasty;
 
     beforeEach(module('batusayApp.controllers'));
 
-    beforeEach(inject(function (_$controller_) {
+    beforeEach(inject(function (_$controller_, _$q_, _$rootScope_) {
       $controller = _$controller_;
+      $q = _$q_;
+      $scope = _$rootScope_.$new();
+      deferLogout = $q.defer();
+      deferState = $q.defer();
       $auth = {
         user: {
           name: 'facebook user'
+        },
+        signOut: function(){
+          return deferLogout.promise;
         }
       };
       $state = {
-        go: function(){return true;}
+        go: function(arg){
+          return deferState.promise;
+        }
       };
       toasty = {
         success: function(){return true;}
@@ -31,7 +44,6 @@
       };
 
       ctrl = $controller('MenuController', dependencies);
-      console.log(ctrl);
     }));
 
 
@@ -42,6 +54,17 @@
 
       it('user in controller should be from $auth', function () {
         expect(ctrl.user.name).toBe($auth.user.name);
+      });
+    });
+
+    describe('functions', function(){
+      it('Should show a toasty on success logout', function(){
+        var spy = spyOn(toasty, 'success');
+        deferLogout.resolve();
+        deferState.resolve();
+        ctrl.logout();
+        $scope.$digest();
+        expect(spy).toHaveBeenCalled();
       });
     });
 
