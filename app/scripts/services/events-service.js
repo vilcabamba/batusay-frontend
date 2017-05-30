@@ -16,7 +16,8 @@
         updateEvent: updateEvent,
         getInvitees: getInvitees,
         setInvitees: setInvitees,
-        removeEvent: removeEvent
+        removeEvent: removeEvent,
+        addSong: addSong
     };
 
     return service;
@@ -100,6 +101,20 @@
       return $http({
         method: 'DELETE',
         url: APP.apiHost + '/api/events/' + eventToRemove.id
+      }).then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(error){
+        return $q.reject(error);
+      });
+    }
+
+    function addSong(eventId, song){
+      return $http({
+        method: 'POST',
+        url: APP.apiHost + '/api/events/' + eventId + '/songs',
+        data: {
+          spotify_id: song.id //jshint ignore:line
+        }
       }).then(function successCallback(response) {
         return response.data;
       }, function errorCallback(error){

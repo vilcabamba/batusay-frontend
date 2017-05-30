@@ -59,7 +59,7 @@
 
         angular.element(audio).on('pause', function(){
           $scope.$apply(function(){
-            song.play = false
+            song.play = false;
           });
         });
       });

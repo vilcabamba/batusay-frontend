@@ -28,9 +28,14 @@
   function SongsListController($rootScope) {
     var songsVm = this;
     songsVm.play = play;
+    songsVm.addSong = addSong;
 
     function play(result) {
       $rootScope.$broadcast('play_song', result);
+    }
+
+    function addSong(result){
+      $rootScope.$broadcast('add_song', result);
     }
 
   }

@@ -21,10 +21,17 @@
 				<span class="label label-danger" ng-if="result.explicit">explicit</span>
 			</div>
 		</div>
-		<div class="play-container" ng-if="result.preview_url">
-			<button ng-class="!result.play ? 'playback btn btn-sm' : 'playback playback-active btn btn-sm'" ng-click="songsVm.play(result)">
+		<div class="play-container">
+			<button ng-class="!result.play ? 'playback btn btn-sm' : 'playback playback-active btn btn-sm'"
+              ng-click="songsVm.play(result)"
+              ng-if="result.preview_url">
 				<i ng-class="!result.play ? 'fa fa-play' : 'fa fa-stop'"></i> {{!result.play ? "play" : "stop"}}
 			</button>
+      <button ng-if="songsVm.shouldAdd === 'true'"
+              class="btn bnt-sm btn-default btn-add"
+              type="button"
+              ng-click="songsVm.addSong(result)"
+              name="button">Agregar</button>
 		</div>
 	</li>
 </ul>

@@ -5,10 +5,10 @@
       .module('batusayApp.controllers')
       .controller('EventController', EventController);
 
-    EventController.$inject = ['EventsServices', '$stateParams', 'MapsService'];
+    EventController.$inject = ['EventsServices', '$stateParams', 'MapsService', '$scope', 'toasty'];
 
     /* @ngInject */
-    function EventController(EventsServices, $stateParams, MapsService) {
+    function EventController(EventsServices, $stateParams, MapsService, $scope, toasty) {
       var vmEvent = this;
 
       init();
@@ -17,8 +17,23 @@
         var id = $stateParams.id;
         EventsServices.getEvent(id).then(function(response){
           vmEvent.event = response.event;
+          vmEvent.songs = vmEvent.event.songs.map(function(row){
+            return row.spotify_track; //jshint ignore:line
+          });
           MapsService.drawMap(vmEvent.event.name, vmEvent.event.lat, vmEvent.event.lng);
         });
       }
+
+      $scope.$on('add_song', function(event, song){
+        var id = $stateParams.id;
+        EventsServices.addSong(id, song).then(function(response){
+          toasty.success({
+            title: 'Canción agregada!'
+          });
+          vmEvent.songs.push(response.spotify_track); //jshint ignore:line
+        }, function(error){
+          console.log(error);
+        });
+      });
     }
 })();
