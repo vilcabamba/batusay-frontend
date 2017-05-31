@@ -10,6 +10,7 @@
       MapsService,
       $q,
       deferEvent,
+      deferredSongs,
       toasty,
       $scope;
 
@@ -20,9 +21,13 @@
       $q = _$q_;
       $scope = _$rootScope_.$new();
       deferEvent = $q.defer();
+      deferredSongs = $q.defer();
       EventsServices = {
         getEvent: function(arg){
           return deferEvent.promise;
+        },
+        getSongs: function(arg){
+          return deferredSongs.promise;
         }
       };
       $stateParams = {
@@ -62,13 +67,20 @@
             id: 1,
             name: 'evento1',
             lat: 12312313,
-            lng: 1312312321,
-            songs: []
+            lng: 1312312321
           }
         };
         deferEvent.resolve(responseObject);
         $scope.$digest();
         expect(ctrl.event).toBe(responseObject.event);
+      });
+
+      it('Should get event songs and set them in controller', function(){
+        var responseSong = { spotify_track: {} },
+            responseObject = { songs: [responseSong] };
+        deferredSongs.resolve(responseObject);
+        $scope.$digest();
+        expect(ctrl.songs).toContain(responseSong.spotify_track);
       });
 
       it('Should call MapsService.drawMap', function(){
