@@ -17,10 +17,12 @@
         var id = $stateParams.id;
         EventsServices.getEvent(id).then(function(response){
           vmEvent.event = response.event;
-          vmEvent.songs = vmEvent.event.songs.map(function(row){
+          MapsService.drawMap(vmEvent.event.name, vmEvent.event.lat, vmEvent.event.lng);
+        });
+        EventsServices.getSongs(id).then(function(response){
+          vmEvent.songs = response.songs.map(function(row){
             return row.spotify_track; //jshint ignore:line
           });
-          MapsService.drawMap(vmEvent.event.name, vmEvent.event.lat, vmEvent.event.lng);
         });
       }
 

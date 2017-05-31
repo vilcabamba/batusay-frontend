@@ -17,6 +17,7 @@
         getInvitees: getInvitees,
         setInvitees: setInvitees,
         removeEvent: removeEvent,
+        getSongs: getSongs,
         addSong: addSong
     };
 
@@ -101,6 +102,17 @@
       return $http({
         method: 'DELETE',
         url: APP.apiHost + '/api/events/' + eventToRemove.id
+      }).then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(error){
+        return $q.reject(error);
+      });
+    }
+
+    function getSongs(eventId){
+      return $http({
+        method: 'GET',
+        url: APP.apiHost + '/api/events/' + eventId + '/songs'
       }).then(function successCallback(response) {
         return response.data;
       }, function errorCallback(error){
