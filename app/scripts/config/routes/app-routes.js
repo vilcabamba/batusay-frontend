@@ -85,8 +85,8 @@
         url: '/',
         views: {
           'menu@app': {
-            controllerAs: 'vmEvents',
-            controller: 'EventsController',
+            controllerAs: 'invitesVM',
+            controller: 'InvitesController',
             templateUrl: 'views/invited/index.html',
           }
         }

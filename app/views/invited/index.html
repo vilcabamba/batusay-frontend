@@ -1,16 +1,18 @@
-<h1>Eventos como invitado</h1>
+<h1>Invitaciones</h1>
+
+<!-- TODO re-use partials for invites / events? -->
 
 <div class="events-container">
+  <h3>Pendientes</h3>
   <div class="event-card"
        ui-sref="app.invited.show({id: event.id})"
-       ng-repeat="event in vmEvents.events track by $index">
+       ng-repeat="invite in invitesVM.pendingInvites track by $index">
     <div class="event-title">
-      {{event.name}}
+      {{invite.event.name}}
     </div>
-    <small>{{event.date | momentDate}}</small>
+    <small>{{invite.created_at | momentDate}}</small>
     <div class="event-description">
-      {{event.descripcion}}
+      {{invite.event.descripcion}}
     </div>
-    <small>{{event.invited_people}} invitados</small>
   </div>
 </div>
