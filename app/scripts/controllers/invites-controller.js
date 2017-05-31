@@ -16,6 +16,8 @@
     function init(){
       InvitesServices.getInvites().then(function(response){
         invitesVM.pendingInvites = response.pending_invites; // jshint ignore:line
+        invitesVM.acceptedInvites = response.accepted_invites; //jshint ignore:line
+        invitesVM.rejectedInvites = response.rejected_invites; //jshint ignore:line
       });
     }
   }

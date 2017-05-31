@@ -92,11 +92,11 @@
         }
       })
       .state('app.invited.show', {
-        url: '/:id',
+        url: '/:eventId/:inviteeId',
         views: {
           'menu@app': {
-            controllerAs: 'vmEvent',
-            controller: 'EventController',
+            controllerAs: 'vmInvitation',
+            controller: 'InvitationController',
             templateUrl: 'views/invited/show.html',
           }
         }

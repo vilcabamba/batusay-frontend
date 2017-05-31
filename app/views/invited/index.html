@@ -1,18 +1,51 @@
 <h1>Invitaciones</h1>
 
-<!-- TODO re-use partials for invites / events? -->
-
 <div class="events-container">
   <h3>Pendientes</h3>
   <div class="event-card"
-       ui-sref="app.invited.show({id: event.id})"
+       ui-sref="app.invited.show({eventId: invite.event.id, inviteeId: invite.id})"
        ng-repeat="invite in invitesVM.pendingInvites track by $index">
     <div class="event-title">
-      {{invite.event.name}}
+      {{invite.event.name}} id del evento
     </div>
     <small>{{invite.created_at | momentDate}}</small>
     <div class="event-description">
       {{invite.event.descripcion}}
+    </div>
+    <div class="">
+      Evento de: {{invite.event.user.name}}
+    </div>
+  </div>
+
+  <h3>Aceptadas</h3>
+  <div class="event-card"
+       ui-sref="app.invited.show({eventId: invite.event.id, inviteeId: invite.id})"
+       ng-repeat="invite in invitesVM.acceptedInvites track by $index">
+    <div class="event-title">
+      {{invite.event.name}} id del evento
+    </div>
+    <small>{{invite.created_at | momentDate}}</small>
+    <div class="event-description">
+      {{invite.event.descripcion}}
+    </div>
+    <div class="">
+      Evento de: {{invite.event.user.name}}
+    </div>
+  </div>
+
+  <h3>Rechazadas</h3>
+  <div class="event-card"
+       ui-sref="app.invited.show({eventId: invite.event.id, inviteeId: invite.id})"
+       ng-repeat="invite in invitesVM.rejectedInvites track by $index">
+    <div class="event-title">
+      {{invite.event.name}} id del evento
+    </div>
+    <small>{{invite.created_at | momentDate}}</small>
+    <div class="event-description">
+      {{invite.event.descripcion}}
+    </div>
+    <div class="">
+      Evento de: {{invite.event.user.name}}
     </div>
   </div>
 </div>
