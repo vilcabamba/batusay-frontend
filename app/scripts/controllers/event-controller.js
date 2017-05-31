@@ -32,7 +32,7 @@
           toasty.success({
             title: 'Canción agregada!'
           });
-          vmEvent.songs.push(response.spotify_track); //jshint ignore:line
+          vmEvent.songs.push(response.song.spotify_track); //jshint ignore:line
         }, function(error){
           console.log(error);
         });
