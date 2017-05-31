@@ -67,6 +67,16 @@
           }
         }
       })
+      .state('app.events.tasks', {
+        url: '/tasks/:id',
+        views: {
+          'menu@app': {
+            controllerAs: 'vmTasks',
+            controller: 'TasksEventController',
+            templateUrl: 'views/events/tasks.html',
+          }
+        }
+      })
       .state('app.events.edit', {
         url: '/edit/:id',
         views: {

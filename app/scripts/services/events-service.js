@@ -18,7 +18,9 @@
         setInvitees: setInvitees,
         removeEvent: removeEvent,
         getSongs: getSongs,
-        addSong: addSong
+        addSong: addSong,
+        addTask: addTask,
+        getTasks: getTasks
     };
 
     return service;
@@ -127,6 +129,29 @@
         data: {
           spotify_id: song.id //jshint ignore:line
         }
+      }).then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(error){
+        return $q.reject(error);
+      });
+    }
+
+    function addTask(eventId, task){
+      return $http({
+        method: 'POST',
+        url: APP.apiHost + '/api/events/' + eventId + '/tasks',
+        data: task
+      }).then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(error){
+        return $q.reject(error);
+      });
+    }
+
+    function getTasks(eventId){
+      return $http({
+        method: 'GET',
+        url: APP.apiHost + '/api/events/' + eventId + '/tasks'
       }).then(function successCallback(response) {
         return response.data;
       }, function errorCallback(error){

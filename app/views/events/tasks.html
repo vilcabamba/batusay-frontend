@@ -1,0 +1,14 @@
+<div class="input-group search-bar">
+	<input type="text"
+         ng-model="vmTasks.task.description"
+         ng-keypress="vmTasks.createTask($event)"
+         class="form-control"
+         placeholder="ingresa una tarea"/
+         required>
+</div>
+
+<div class="task-list-container">
+  <ul ng-repeat="task in vmTasks.tasks track by $index">
+    <li>{{task.description}}</li>
+  </ul>
+</div>
