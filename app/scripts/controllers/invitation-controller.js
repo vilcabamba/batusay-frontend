@@ -29,17 +29,15 @@
       function init(){
         var eventId = $stateParams.eventId;
         var invitationId = $stateParams.inviteeId;
-        EventsServices.getEvent(eventId).then(function(response){
-          vmInvitation.event = response.event;
+        InvitesServices.getInvitation(invitationId).then(function(response){
+          vmInvitation.invitation = response.invite;
+          vmInvitation.event = vmInvitation.invitation.event;
           MapsService.drawMap(vmInvitation.event.name, vmInvitation.event.lat, vmInvitation.event.lng);
         });
         EventsServices.getSongs(eventId).then(function(response){
           vmInvitation.songs = response.songs.map(function(row){
             return row.spotify_track; //jshint ignore:line
           });
-        });
-        InvitesServices.getInvitation(invitationId).then(function(response){
-          vmInvitation.invitation = response.invite;
         });
       }
 
@@ -49,7 +47,7 @@
           toasty.success({
             title: 'Canción agregada!'
           });
-          vmInvitation.songs.push(response.spotify_track); //jshint ignore:line
+          vmInvitation.songs.push(response.song.spotify_track); //jshint ignore:line
         }, function(error){
           console.log(error);
         });
