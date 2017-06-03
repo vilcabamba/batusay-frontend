@@ -57,16 +57,6 @@
           }
         }
       })
-      .state('app.events.invite', {
-        url: '/invite/:id',
-        views: {
-          'menu@app': {
-            controllerAs: 'vmEvent',
-            controller: 'InviteEventController',
-            templateUrl: 'views/events/invite.html',
-          }
-        }
-      })
       .state('app.events.tasks', {
         url: '/tasks/:id',
         views: {

@@ -1,19 +1,47 @@
 <h1>{{::vmEvent.event.name}}</h1>
-<div class="event-information event-card col-md-5 col-xs-12">
-  <div>
-    <small>{{::vmEvent.event.date | momentDate}}</small>
-  </div>
-  <div>
-    <small>{{::vmEvent.event.invited_people}} invitados</small>
-  </div>
 
-  <div class="event-show-description">
-    {{::vmEvent.event.descripcion}}
+<div class="col-md-6 col-xs-12">
+  <div class="event-information event-card">
+    <div>
+      <small>{{::vmEvent.event.date | momentDate}}</small>
+    </div>
+    <div>
+      <small>{{::vmEvent.event.invited_people}} invitados</small>
+    </div>
+
+    <div class="event-show-description">
+      {{::vmEvent.event.descripcion}}
+    </div>
   </div>
 </div>
 
-<div class="event-information event-card col-md-offset-1 col-md-5 col-xs-12">
+
+<div class="event-information event-card col-md-6 col-xs-12">
   <div id="map" class="map"></div>
+</div>
+
+<div class="col-md-12 event-card">
+  <div class="lists">
+    <ul class="list" title="Usuarios">
+      <li class="item"
+          ng-repeat="item in vmEvent.allFriends track by $index"
+          ng-click="vmEvent.moveToInvitees(item)">
+          <span class="item-contents" ng-animate-ref="{{ item.id }}">{{ item.name }}</span>
+      </li>
+    </ul>
+    <ul class="list" title="Invitados">
+      <li class="item"
+          ng-repeat="item in vmEvent.invitedFriends track by $index"
+          ng-click="vmEvent.moveToAllFriends(item)">
+          <span class="item-contents" ng-animate-ref="{{ item.id }}">{{ item.name }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="">
+    <a href="javascript:void(0)" ng-click="vmEvent.invitee()">Invitar</a>
+  </div>
+
 </div>
 
 <hr class="sutil-divider">

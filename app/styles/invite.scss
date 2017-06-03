@@ -5,12 +5,10 @@
 
 .list {
   width: 600px;
-  border: 1px solid #eeeeee;
   padding: 0 0 10px 0;
 
   &:before{
     content: attr(title);
-    background: #eeeeee;
     display: block;
     padding: 10px;
     font-weight: bold;
@@ -42,7 +40,7 @@
 }
 
 .item:hover {
-  color: blue;
+  color: #77ab17;
 }
 
 .item-contents {
@@ -53,7 +51,6 @@
   padding: 0 10px;
 }
 
-/* Contents are cloned and position transitioned between the lists */
 .item-contents.ng-anchor-out {
   /* No "out" transition: the item moving accross the page is exactly how it
      appears in the source location */
