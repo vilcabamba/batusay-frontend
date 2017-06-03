@@ -1,28 +1,35 @@
 <h1>{{::vmEvent.event.name}}</h1>
-<div>
-  <small>{{::vmEvent.event.date | momentDate}}</small>
-</div>
-<div>
-  <small>{{::vmEvent.event.invited_people}} invitados</small>
+<div class="event-information event-card col-md-5 col-xs-12">
+  <div>
+    <small>{{::vmEvent.event.date | momentDate}}</small>
+  </div>
+  <div>
+    <small>{{::vmEvent.event.invited_people}} invitados</small>
+  </div>
+
+  <div class="event-show-description">
+    {{::vmEvent.event.descripcion}}
+  </div>
 </div>
 
-<div class="event-show-description">
-  {{::vmEvent.event.descripcion}}
+<div class="event-information event-card col-md-offset-1 col-md-5 col-xs-12">
+  <div id="map" class="map"></div>
 </div>
-
-<div id="map" class="map"></div>
 
 <hr class="sutil-divider">
 
-<songs-list song-list="vmEvent.songs"></songs-list>
+<div class="col-md-12">
+  <songs-list song-list="vmEvent.songs"></songs-list>
 
-<hr class="sutil-divider">
+  <hr class="sutil-divider">
 
-<div spotify class="spotify-container"></div>
+  <div spotify class="spotify-container"></div>
+</div>
+
 
 <div now-playing></div>
 
-<div class="links">
+<div class="links col-md-12">
   <a ui-sref="app.events.invite({id:vmEvent.event.id})">Invitar amigos</a> |
   <a ui-sref="app.events.tasks({id:vmEvent.event.id})">Asignar tareas</a> |
   <a ui-sref="app.events.edit({id:vmEvent.event.id})">Editar</a> |
