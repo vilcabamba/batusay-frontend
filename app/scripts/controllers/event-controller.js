@@ -24,8 +24,7 @@
       vmEvent.moveToAllFriends = moveToAllFriends;
       vmEvent.moveToInvitees = moveToInvitees;
       vmEvent.invitee = invitee;
-
-
+      vmEvent.uploadFiles = uploadFiles;
 
       init();
 
@@ -53,6 +52,9 @@
         }, function(error){
           console.log(error);
         });
+        EventsServices.getMedia(eventId).then(function(response){
+          vmEvent.media = response.media;
+        });
       }
 
       function moveToInvitees(user) {
@@ -75,6 +77,14 @@
             title: 'Existen errores!'
           });
         });
+      }
+
+      function uploadFiles(files) {
+        if (files && files.length) {
+          EventsServices.uploadMedia(eventId, files, function callback(eventPicture){
+            vmEvent.media.push(eventPicture);
+          });
+        }
       }
 
       $scope.$on('add_song', function(event, song){

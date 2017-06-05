@@ -5,10 +5,10 @@
     .module('batusayApp.services')
     .factory('EventsServices', EventsServices);
 
-  EventsServices.$inject = ['$http', '$q', 'APP'];
+  EventsServices.$inject = ['$http', '$q', '$auth', 'APP', 'Upload'];
 
   /* @ngInject */
-  function EventsServices($http, $q, APP) {
+  function EventsServices($http, $q, $auth, APP, Upload) {
     var service = {
         createEvent: createEvent,
         getEvents: getEvents,
@@ -21,6 +21,8 @@
         addSong: addSong,
         addTask: addTask,
         getTasks: getTasks,
+        getMedia: getMedia,
+        uploadMedia: uploadMedia,
         asigneeTaskToUser: asigneeTaskToUser
     };
 
@@ -172,5 +174,27 @@
       });
     }
 
+    function getMedia(eventId) {
+      return $http({
+        method: 'GET',
+        url: APP.apiHost + '/api/events/' + eventId + '/media'
+      }).then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(error){
+        return $q.reject(error);
+      });
+    }
+
+    function uploadMedia(eventId, files, uploadedFileCB) {
+      _.each(files, function(file) {
+        Upload.upload({
+          url: APP.apiHost + '/api/events/' + eventId + '/media',
+          data: { picture: file },
+          headers: $auth.retrieveData('auth_headers')
+        }).then(function(response){
+          uploadedFileCB(response.data.medium);
+        });
+      });
+    }
   }
 })();

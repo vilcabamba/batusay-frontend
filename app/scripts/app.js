@@ -14,7 +14,8 @@
       'vsGoogleAutocomplete',
       'angular-toasty',
       'ui.bootstrap.datetimepicker',
-      'ngAnimate'
+      'ngAnimate',
+      'ngFileUpload'
     ]);
 
   angular.module('batusayApp.controllers', []);
