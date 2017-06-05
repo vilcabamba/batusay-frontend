@@ -48,8 +48,6 @@ module.exports = function(config) {
       'bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js',
       'bower_components/lodash/lodash.js',
       'bower_components/ng-file-upload/ng-file-upload.js',
-      'bower_components/angucomplete-alt/angucomplete-alt.js',
-      'bower_components/angular-modal-service/dst/angular-modal-service.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
@@ -84,7 +82,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: true,
+    singleRun: false,
 
     colors: true,
 

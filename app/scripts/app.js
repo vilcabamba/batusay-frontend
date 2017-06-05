@@ -15,9 +15,7 @@
       'angular-toasty',
       'ui.bootstrap.datetimepicker',
       'ngAnimate',
-      'ngFileUpload',
-      'angucomplete-alt',
-      'angularModalService'
+      'ngFileUpload'
     ]);
 
   angular.module('batusayApp.controllers', []);

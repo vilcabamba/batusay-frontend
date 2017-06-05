@@ -8,9 +8,12 @@
       EventsServices,
       $stateParams,
       MapsService,
+      FriendsService,
       $q,
       deferEvent,
       deferredSongs,
+      deferInvitees,
+      deferMedia,
       toasty,
       $scope;
 
@@ -22,12 +25,25 @@
       $scope = _$rootScope_.$new();
       deferEvent = $q.defer();
       deferredSongs = $q.defer();
+      deferInvitees = $q.defer();
+      deferMedia = $q.defer();
       EventsServices = {
         getEvent: function(arg){
           return deferEvent.promise;
         },
         getSongs: function(arg){
           return deferredSongs.promise;
+        },
+        getInvitees: function(arg){
+          return deferInvitees.promise;
+        },
+        getMedia: function(){
+          return deferMedia.promise;
+        }
+      };
+      FriendsService = {
+        getFriends: function(){
+          return true;
         }
       };
       $stateParams = {
@@ -49,7 +65,8 @@
         $stateParams: $stateParams,
         MapsService: MapsService,
         $scope: $scope,
-        toasty: toasty
+        toasty: toasty,
+        FriendsService: FriendsService
       };
 
       ctrl = $controller('EventController', dependencies);

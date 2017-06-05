@@ -5,47 +5,31 @@
       .module('batusayApp.controllers')
       .controller('TasksEventController', TasksEventController);
 
-    TasksEventController.$inject = ['EventsServices', 'toasty', '$stateParams', 'ModalService'];
+    TasksEventController.$inject = ['EventsServices', 'toasty', '$stateParams'];
 
     /* @ngInject */
-    function TasksEventController(EventsServices, toasty, $stateParams, ModalService) {
-      var vmTasks = this,
-          eventId;
+    function TasksEventController(EventsServices, toasty, $stateParams) {
+      var vmTasks = this;
+      vmTasks.eventId =$stateParams.id;
       vmTasks.setUser = setUser;
       vmTasks.createTask = createTask;
-      vmTasks.assign = assign;
 
       init();
 
       function init(){
-        eventId = $stateParams.id;
-        EventsServices.getTasks(eventId).then(function(response){
+        EventsServices.getTasks(vmTasks.eventId).then(function(response){
           vmTasks.tasks = response.tasks;
         });
-        EventsServices.getInvitees(eventId).then(function(response){
+        EventsServices.getInvitees(vmTasks.eventId).then(function(response){
           vmTasks.inviteeUsers = response.invitees.map(function(invitee){
             return invitee.user;
           });
         });
       }
 
-      function assign(task){
-        ModalService.showModal({
-          templateUrl: 'views/events/assign.html',
-          controller: 'AssignController'
-        }).then(function(modal) {
-
-          modal.element.modal();
-          modal.close.then(function(result) {
-            console.log(result);
-          });
-        });
-      }
-
       function createTask($event){
         if ($event.which === 13 && vmTasks.task && vmTasks.task.description) {
-          var id = $stateParams.id;
-          EventsServices.addTask(id, vmTasks.task).then(function(response){
+          EventsServices.addTask(vmTasks.eventId, vmTasks.task).then(function(response){
             vmTasks.tasks.push(response.task);
             vmTasks.task = null;
           }, function(error){
@@ -58,7 +42,11 @@
       }
 
       function setUser(task){
-        EventsServices.asigneeTaskToUser(eventId, task.id, task.user);
+        EventsServices.asigneeTaskToUser(vmTasks.eventId, task.id, task.user).then(function(response){
+          toasty.success({
+            title: 'Tarea asignada correctamente'
+          });
+        });
       }
     }
 })();
