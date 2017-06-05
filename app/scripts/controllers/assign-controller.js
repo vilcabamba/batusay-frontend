@@ -3,29 +3,33 @@
 
     angular
       .module('batusayApp.controllers')
-      .controller('TasksEventController', TasksEventController);
+      .controller('AssignController', AssignController);
 
-    TasksEventController.$inject = ['EventsServices', 'toasty', '$stateParams', 'ModalService'];
+    AssignController.$inject = ['EventsServices', 'toasty', '$stateParams', 'ModalService'];
 
     /* @ngInject */
-    function TasksEventController(EventsServices, toasty, $stateParams, ModalService) {
-      var vmTasks = this,
-          eventId;
-      vmTasks.setUser = setUser;
+    function AssignController(EventsServices, toasty, $stateParams, ModalService) {
+      var vmTasks = this;
       vmTasks.createTask = createTask;
       vmTasks.assign = assign;
 
       init();
 
       function init(){
-        eventId = $stateParams.id;
-        EventsServices.getTasks(eventId).then(function(response){
-          vmTasks.tasks = response.tasks;
-        });
+        var eventId = $stateParams.id;
         EventsServices.getInvitees(eventId).then(function(response){
-          vmTasks.inviteeUsers = response.invitees.map(function(invitee){
+          vmTasks.invitedFriends = response.invitees.map(function(invitee){
             return invitee.user;
           });
+          FriendsService.getFriends().then(function(response){
+            vmEvent.allFriends = response.friends.filter(function(friend){
+              return !_.some(vmEvent.invitedFriends, friend);
+            });
+          }, function(error){
+            console.log(error);
+          });
+        }, function(error){
+          console.log(error);
         });
       }
 
@@ -35,6 +39,7 @@
           controller: 'AssignController'
         }).then(function(modal) {
 
+          //it's a bootstrap element, use 'modal' to show it
           modal.element.modal();
           modal.close.then(function(result) {
             console.log(result);
@@ -55,10 +60,6 @@
             });
           });
         }
-      }
-
-      function setUser(task){
-        EventsServices.asigneeTaskToUser(eventId, task.id, task.user);
       }
     }
 })();
