@@ -9,15 +9,22 @@
 
     /* @ngInject */
     function TasksEventController(EventsServices, toasty, $stateParams) {
-      var vmTasks = this;
+      var vmTasks = this,
+          eventId;
+      vmTasks.setUser = setUser;
       vmTasks.createTask = createTask;
 
       init();
 
       function init(){
-        var id = $stateParams.id;
-        EventsServices.getTasks(id).then(function(response){
+        eventId = $stateParams.id;
+        EventsServices.getTasks(eventId).then(function(response){
           vmTasks.tasks = response.tasks;
+        });
+        EventsServices.getInvitees(eventId).then(function(response){
+          vmTasks.inviteeUsers = response.invitees.map(function(invitee){
+            return invitee.user;
+          });
         });
       }
 
@@ -34,6 +41,10 @@
             });
           });
         }
+      }
+
+      function setUser(task){
+        EventsServices.asigneeTaskToUser(eventId, task.id, task.user);
       }
     }
 })();

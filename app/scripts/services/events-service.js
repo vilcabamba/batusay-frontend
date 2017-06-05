@@ -20,7 +20,8 @@
         getSongs: getSongs,
         addSong: addSong,
         addTask: addTask,
-        getTasks: getTasks
+        getTasks: getTasks,
+        asigneeTaskToUser: asigneeTaskToUser
     };
 
     return service;
@@ -156,6 +157,18 @@
         return response.data;
       }, function errorCallback(error){
         return $q.reject(error);
+      });
+    }
+
+    function asigneeTaskToUser(eventId, taskId, user) {
+      return $http({
+        method: 'PATCH',
+        url: APP.apiHost + '/api/events/' + eventId + '/tasks/' + taskId,
+        data: {
+          user_id: user.id // jshint ignore:line
+        }
+      }).then(function(response){
+        return response.data;
       });
     }
 

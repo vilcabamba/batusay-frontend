@@ -36,3 +36,9 @@
   height: 300px;
   width: 100%;
 }
+
+.main-event-info {
+  .info-card:first-child {
+    padding-right: 15px;
+  }
+}

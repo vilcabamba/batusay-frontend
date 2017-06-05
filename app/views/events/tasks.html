@@ -9,6 +9,13 @@
 
 <div class="task-list-container">
   <ul ng-repeat="task in vmTasks.tasks track by $index">
-    <li>{{task.description}}</li>
+    <li>
+      {{task.description}}
+
+      <select ng-model="task.user"
+              ng-change="vmTasks.setUser(task)"
+              ng-options="user.name for user in vmTasks.inviteeUsers track by user.id">
+      </select>
+    </li>
   </ul>
 </div>
