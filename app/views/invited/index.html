@@ -16,6 +16,9 @@
       Evento de: {{invite.event.user.name}}
     </div>
   </div>
+  <div class="event-card" ng-if="invitesVM.pendingInvites.length === 0">
+    No hay invitaciones
+  </div>
 
   <h3>Aceptadas</h3>
   <div class="event-card"
@@ -32,6 +35,9 @@
       Evento de: {{invite.event.user.name}}
     </div>
   </div>
+  <div class="event-card" ng-if="invitesVM.acceptedInvites.length === 0">
+    No has aceptado invitaciones
+  </div>
 
   <h3>Rechazadas</h3>
   <div class="event-card"
@@ -47,5 +53,8 @@
     <div class="">
       Evento de: {{invite.event.user.name}}
     </div>
+  </div>
+  <div class="event-card" ng-if="invitesVM.rejectedInvites.length === 0">
+    No has rechazado invitaciones
   </div>
 </div>
