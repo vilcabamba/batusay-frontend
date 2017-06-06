@@ -21,14 +21,15 @@
                                   toasty,
                                   InvitesServices,
                                   $state) {
-      var vmInvitation = this;
+      var vmInvitation = this,
+          eventId = $stateParams.eventId;
       vmInvitation.acceptInvitation = acceptInvitation;
       vmInvitation.rejectInvitation = rejectInvitation;
+      vmInvitation.uploadFiles = uploadFiles;
 
       init();
 
       function init(){
-        var eventId = $stateParams.eventId;
         var invitationId = $stateParams.inviteeId;
         InvitesServices.getInvitation(invitationId).then(function(response){
           vmInvitation.invitation = response.invite;
@@ -43,11 +44,13 @@
         EventsServices.getTasks(eventId).then(function(response){
           vmInvitation.tasks= response.tasks;
         });
+        EventsServices.getMedia(eventId).then(function(response){
+          vmInvitation.media = response.media;
+        });
       }
 
       $scope.$on('add_song', function(event, song){
-        var id = $stateParams.eventId;
-        EventsServices.addSong(id, song).then(function(response){
+        EventsServices.addSong(eventId, song).then(function(response){
           toasty.success({
             title: 'Canción agregada!'
           });
@@ -83,6 +86,14 @@
             title: 'Ha ocurrido un error. Inténtalo nuevamente'
           });
         });
+      }
+
+      function uploadFiles(files) {
+        if (files && files.length) {
+          EventsServices.uploadMedia(eventId, files, function callback(eventPicture){
+            vmInvitation.media.push(eventPicture);
+          });
+        }
       }
     }
 })();
