@@ -3,6 +3,6 @@
 /.tmp
 /.sass-cache
 /bower_components
-.DSStore
+.DS_Store
 app/scripts/config/constants.js
 /vendor/*
