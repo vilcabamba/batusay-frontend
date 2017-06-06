@@ -17,7 +17,7 @@
       <div id="map" class="map"></div>
 
       <div class="links">
-        <a ui-sref="app.events.edit({id:vmEvent.event.id})">Editar</a> |
+        <span ng-if="vmEvent.couldEdit"><a ui-sref="app.events.edit({id:vmEvent.event.id})">Editar</a> |</span>
         <a ui-sref="app.events.index">Regresar</a>
       </div>
     </div>

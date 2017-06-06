@@ -32,6 +32,8 @@
         EventsServices.getEvent(eventId).then(function(response){
           vmEvent.event = response.event;
           MapsService.drawMap(vmEvent.event.name, vmEvent.event.lat, vmEvent.event.lng);
+          vmEvent.couldEdit = moment().diff(vmEvent.event.date, 'minutes') <= 0;
+          console.log(vmEvent.couldEdit);
         });
         EventsServices.getSongs(eventId).then(function(response){
           vmEvent.songs = response.songs.map(function(row){
