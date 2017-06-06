@@ -23,6 +23,7 @@
                                   $state) {
       var vmInvitation = this;
       vmInvitation.acceptInvitation = acceptInvitation;
+      vmInvitation.rejectInvitation = rejectInvitation;
 
       init();
 
