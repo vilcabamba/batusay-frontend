@@ -6,7 +6,7 @@
        ui-sref="app.invited.show({eventId: invite.event.id, inviteeId: invite.id})"
        ng-repeat="invite in invitesVM.pendingInvites track by $index">
     <div class="event-title">
-      {{invite.event.name}} id del evento
+      {{invite.event.name}}
     </div>
     <small>{{invite.created_at | momentDate}}</small>
     <div class="event-description">
@@ -22,7 +22,7 @@
        ui-sref="app.invited.show({eventId: invite.event.id, inviteeId: invite.id})"
        ng-repeat="invite in invitesVM.acceptedInvites track by $index">
     <div class="event-title">
-      {{invite.event.name}} id del evento
+      {{invite.event.name}}
     </div>
     <small>{{invite.created_at | momentDate}}</small>
     <div class="event-description">
@@ -38,7 +38,7 @@
        ui-sref="app.invited.show({eventId: invite.event.id, inviteeId: invite.id})"
        ng-repeat="invite in invitesVM.rejectedInvites track by $index">
     <div class="event-title">
-      {{invite.event.name}} id del evento
+      {{invite.event.name}}
     </div>
     <small>{{invite.created_at | momentDate}}</small>
     <div class="event-description">

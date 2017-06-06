@@ -11,6 +11,16 @@
   {{::vmInvitation.event.descripcion}}
 </div>
 
+<div class="col-md-12">
+  Tareas
+  <ul>
+    <li ng-repeat="task in vmInvitation.tasks track by $index">
+      <span>{{task.description}}</span>
+      <span ng-if="task.user">: {{task.user.name}}</span>
+    </li>
+  </ul>
+</div>
+
 <div id="map" class="map"></div>
 
 <hr class="sutil-divider">

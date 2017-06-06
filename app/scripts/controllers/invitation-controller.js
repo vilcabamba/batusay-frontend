@@ -39,6 +39,9 @@
             return row.spotify_track; //jshint ignore:line
           });
         });
+        EventsServices.getTasks(eventId).then(function(response){
+          vmInvitation.tasks= response.tasks;
+        });
       }
 
       $scope.$on('add_song', function(event, song){
