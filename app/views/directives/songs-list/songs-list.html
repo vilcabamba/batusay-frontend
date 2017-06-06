@@ -6,19 +6,19 @@
 				<span>{{result.name}}</span>
 			</div>
 			<div class="artist">
-				<span class="property">Artist(s): </span>
+				<span class="property">Artista(s): </span>
 				<span ng-repeat="artist in result.artists">
-					<a class="link" href="#" ng-click="searchArtist(artist.name)">{{artist.name}}</a>{{$last ? '' : ','}}
+					<span class="link">{{artist.name}}</span>{{$last ? '' : ','}}
 				</span>
 			</div>
 			<div class="album">
-				<span class="property">Album: </span>
+				<span class="property">Álbum: </span>
 				<span>{{result.album.name}}</span>
 			</div>
 			<div class="tags">
-				<span class="label label-primary">time: {{result.duration_ms | momentDuration}}</span>
-				<span class="label label-default">popularity: {{result.popularity }}</span>
-				<span class="label label-danger" ng-if="result.explicit">explicit</span>
+				<span class="label label-primary">duración: {{result.duration_ms | momentDuration}}</span>
+				<span class="label label-default">popularidad: {{result.popularity }}</span>
+				<span class="label label-danger" ng-if="result.explicit">explícita</span>
 			</div>
 		</div>
 		<div class="play-container">
@@ -28,10 +28,10 @@
 				<i ng-class="!result.play ? 'fa fa-play' : 'fa fa-stop'"></i> {{!result.play ? "play" : "stop"}}
 			</button>
       <button ng-if="songsVm.shouldAdd === 'true'"
-              class="btn bnt-sm btn-default btn-add"
+              class="btn btn-sm btn-default btn-add"
               type="button"
               ng-click="songsVm.addSong(result)"
-              name="button">Agregar</button>
+              name="button">agregar</button>
 		</div>
 	</li>
 </ul>

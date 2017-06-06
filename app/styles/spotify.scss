@@ -44,14 +44,6 @@ audio {
   }
 }
 
-.no-results {
-  margin-top: 1em;
-  padding: 1em;
-  display: none;
-  background-color: #F5F5F5;
-  text-align: center;
-}
-
 .search-results {
   margin-top: 1em;
   display: none;
@@ -68,6 +60,7 @@ audio {
   background-color: #F5F5F5;
   border-bottom: 1px solid #d2d2d2;
   overflow: auto;
+  position: relative;
 
   .artwork {
     border: 1px solid #666;
@@ -97,9 +90,9 @@ audio {
   }
 
   .play-container {
-    width: 10%;
-    text-align: right;
-    float: right;
+    position: absolute;
+    right: 10px;
+    top: 20px;
   }
 
   .playback {
@@ -115,42 +108,18 @@ audio {
   }
 }
 
-.buttons {
-  background-color: #fff;
-  padding: 0.5em 1em;
-  overflow: auto;
-  border-bottom: 1px solid #d2d2d2;
-
-  .fa-chevron-left {
-    margin-right: 5px;
-  }
-
-  .fa-chevron-right {
-    margin-left: 5px;
-  }
-
-  .count {
-    display: block;
-    text-align: center;
-  }
-}
-
 .btn-add {
   margin-top: 5px;
+  outline: none !important;
 }
 
 .link {
   text-decoration: none;
   border-bottom: 1px dotted $primaryColour;
   color: $primaryColour;
-  cursor: pointer;
 }
 
 .link:hover {
   color: $primaryColour;
   text-decoration: none;
-}
-
-.hidden {
-  visibility: hidden;
 }
