@@ -24,9 +24,9 @@
 <div now-playing></div>
 
 <div class="links">
-  <sàn ng-if="vmInvitation.invitation.status === 'pending'">
+  <div ng-if="vmInvitation.invitation.status === 'pending'">
     <a class="clickeable" ng-click="vmInvitation.acceptInvitation()">Aceptar invitación</a> |
     <a class="clickeable" ng-click="vmInvitation.rejectInvitation()">Rechazar invitación</a> |
-  </sàn>
+  </div>
   <a ui-sref="app.invited.index">Regresar</a>
 </div>
