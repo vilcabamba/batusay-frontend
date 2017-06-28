@@ -38,7 +38,6 @@
         });
         EventsServices.getSongs(eventId).then(function(response){
           vmInvitation.songs = response.songs.map(function(row){
-            console.log(row);
             return row.spotify_track; //jshint ignore:line
           });
         });

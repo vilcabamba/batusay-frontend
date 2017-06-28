@@ -1,0 +1,16 @@
+<div class="col-md-6 col-xs-12">
+  <div class="event-information info-card">
+    <div>
+      <small>{{::model.event.date | momentDate}}</small>
+    </div>
+    <div>
+      <small>{{model.event.invited_people}} invitados</small>
+    </div>
+
+    <div class="event-show-description">
+      {{::model.event.descripcion}}
+    </div>
+
+    <div id="map" class="map"></div>
+  </div>
+</div>

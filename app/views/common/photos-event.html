@@ -1,0 +1,16 @@
+<div class="col-md-12">
+  <div class="info-card">
+    <div class="title">
+      <h4><i class="fa fa-picture-o"></i> momentos</h4>
+      <div ngf-drop="model.uploadFiles($files)" class="media-uploader"
+           ngf-drag-over-class="'dragover'" ngf-multiple="true"
+           ngf-pattern="'image/*,application/pdf'">
+        <div class="img-wrapper"
+             ng-repeat="medium in model.media track by $index">
+          <img ng-src="{{ ::medium.picture_url }}" alt="">
+        </div>
+        <p class="placeholder">arrastra tus imágenes aquí</p>
+      </div>
+    </div>
+  </div>
+</div>
