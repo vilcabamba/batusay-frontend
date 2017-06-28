@@ -2,6 +2,12 @@
 
 [![CircleCI](https://circleci.com/gh/vilcabamba/batusay-frontend.svg?style=shield)](https://circleci.com/gh/vilcabamba/batusay-frontend)
 
+## Requirements
+
+- Node > 6
+- Ruby > 2 (for Sass)
+
+
 ## Build & development
 
 - Clone the repo
@@ -12,4 +18,4 @@ Run `grunt` for building and `grunt serve` for preview.
 
 ## Testing
 
-Running `grunt test` will run the unit tests with karma.
+Running `npm test` will run the unit tests with karma.
