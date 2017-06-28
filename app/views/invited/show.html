@@ -1,50 +1,51 @@
-
 <h1>{{::vmInvitation.event.name}}</h1>
-<div>
-  <small>{{::vmInvitation.event.date | momentDate}}</small>
-</div>
-<div>
-  <small>{{::vmInvitation.event.invited_people}} invitados</small>
-</div>
 
-<div class="event-show-description">
-  {{::vmInvitation.event.descripcion}}
-</div>
+<div class="row main-event-info">
+  <div class="col-md-6 col-xs-12">
+    <div class="event-information info-card">
+      <div>
+        <small>{{::vmInvitation.event.date | momentDate}}</small>
+      </div>
+      <div>
+        <small>{{::vmInvitation.event.invited_people}} invitados</small>
+      </div>
 
-<div class="col-md-12">
-  Tareas
-  <ul>
-    <li ng-repeat="task in vmInvitation.tasks track by $index">
-      <span>{{task.description}}</span>
-      <span ng-if="task.user">: {{task.user.name}}</span>
-    </li>
-  </ul>
-</div>
+      <div class="event-show-description">
+        {{::vmInvitation.event.descripcion}}
+      </div>
 
-<div id="map" class="map"></div>
+      <div id="map" class="map"></div>
 
-<hr class="sutil-divider">
+      <div class="links">
+        <span ng-if="vmInvitation.couldEdit"><a ui-sref="app.events.edit({id:vmInvitation.event.id})">Editar</a> |</span>
+        <a ui-sref="app.events.index">Regresar</a>
+      </div>
+    </div>
+  </div>
 
-<songs-list song-list="vmInvitation.songs"></songs-list>
+  <div class="col-md-6 col-xs-12">
+    <div class="info-card">
+      <songs-list song-list="vmInvitation.songs"></songs-list>
 
-<hr class="sutil-divider">
+      <hr class="sutil-divider">
 
-<div spotify class="spotify-container"></div>
+      <div spotify class="spotify-container"></div>
+    </div>
+  </div>
 
-<div now-playing></div>
-
-<div class="col-md-12">
-  <div class="info-card">
-    <div class="title">
-      <h4><i class="fa fa-picture-o"></i> momentos</h4>
-      <div ngf-drop="vmInvitation.uploadFiles($files)" class="media-uploader"
-           ngf-drag-over-class="'dragover'" ngf-multiple="true"
-           ngf-pattern="'image/*,application/pdf'">
-        <div class="img-wrapper"
-             ng-repeat="medium in vmInvitation.media track by $index">
-          <img ng-src="{{ ::medium.picture_url }}" alt="">
+  <div class="col-md-12">
+    <div class="info-card">
+      <div class="title">
+      	<h4><i class="fa fa-picture-o"></i> momentos</h4>
+        <div ngf-drop="vmInvitation.uploadFiles($files)" class="media-uploader"
+             ngf-drag-over-class="'dragover'" ngf-multiple="true"
+             ngf-pattern="'image/*,application/pdf'">
+          <div class="img-wrapper"
+               ng-repeat="medium in vmInvitation.media track by $index">
+            <img ng-src="{{ ::medium.picture_url }}" alt="">
+          </div>
+          <p class="placeholder">arrastra tus imágenes aquí</p>
         </div>
-        <p class="placeholder">arrastra tus imágenes aquí</p>
       </div>
     </div>
   </div>
@@ -57,3 +58,5 @@
   </div>
   <a ui-sref="app.invited.index">Regresar</a>
 </div>
+
+<div now-playing></div>
