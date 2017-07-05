@@ -19,6 +19,16 @@
     </div>
   </div>
 
+  <div ng-if="vmInvitation.tasks.length > 0" class="col-md-12">
+    <div class="col-md-12 info-card">
+      <h4>Tareas para invitados</h4>
+      <li ng-repeat="task in vmInvitation.tasks">
+        {{task.description}} - {{task.user.name}}
+      </li>
+    </div>
+  </div>
+
+
   <div ng-include="'views/common/photos-event.html'" onload="model=vmInvitation">
   </div>
 </div>
